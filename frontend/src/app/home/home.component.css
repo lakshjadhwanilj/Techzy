@@ -1,0 +1,26 @@
+
+.carousel-item .active{
+    display: flex;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0;
+}
+
+.carousel-caption h2 {
+    color: #fff;
+}
+
+.carousel img {
+    height: 80vh;
+    /* padding: 30px; */
+    /* margin: 40px; */
+    /* border-radius: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-caption a{
+    margin: 0 auto;
+}

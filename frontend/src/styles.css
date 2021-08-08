@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+.success {
+    color: #26C999;
+}
+
+.button-success {
+    color: #fff;
+    background-color: #26C999;
+}
+
+.button-success:hover {
+    color: #fff;
+    background-color: #0a927b;
+}
