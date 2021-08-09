@@ -1,0 +1,29 @@
+.carousel-item {
+    height: 70vh;
+}
+
+.carousel-item .active{
+    display: flex;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+}
+
+.carousel-caption h3 {
+    color: #26C999;
+}
+
+.carousel img {
+    height: 50vh;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel-caption a{
+    margin: 0 auto;
+}

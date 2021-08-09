@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Roboto Mono', monospace;
+}
+
+h2, h3 {
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-size: 2rem;
+}
 
 .success {
     color: #26C999;
