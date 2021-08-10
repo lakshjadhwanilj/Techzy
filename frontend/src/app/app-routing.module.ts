@@ -4,6 +4,8 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { AddProductComponent } from './Product/add-product/add-product.component';
+import { UpdateProductComponent } from './Product/update-product/update-product.component';
  
 
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'addnewproduct', component:AddProductComponent},
+  {path: 'updateproduct', component:UpdateProductComponent},
   { path: '**', component: HomeComponent }
 ];
 
