@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/Services/product.service';
+import { Product } from '../Product';
 
 @Component({
   selector: 'app-get-product-by-id',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetProductByIdComponent implements OnInit {
 
-  constructor() { }
+  subject: any
+  productId: any
+  product: Product = new Product
+  
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.subject = this.activatedRoute.paramMap.subscribe(params => {
+      this.productId = params.get('productId')
+      // this.product =
+        this.productService.getProductById(this.productId)
+    })
+  }
+
+  ngOnDestroy() {
+    this.subject.unsubscribe();
+  }
+
+  onBack(): void{
+    this.router.navigate(['products']);
   }
 
 }

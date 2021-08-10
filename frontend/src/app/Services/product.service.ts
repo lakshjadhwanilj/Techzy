@@ -7,8 +7,10 @@ import { Product } from '../Product/Product';
   providedIn: 'root'
 })
 export class ProductService {
-  baseUrl:string='';
-  product:Product = new Product();
+ 
+
+  private baseUrl = 'http://localhost:8095/api/v1'
+
   constructor(private http: HttpClient) { }
 
   addNewProduct(product: Object): Observable<Object> {
@@ -26,4 +28,15 @@ export class ProductService {
   //   this.product = getProductById(id)
   //   console.log(this.http.put<Product>(this.baseUrl+'/updateProduct/'+id,this.product))
   //  }
+
+  getAllProducts() {
+    console.log('This method will get all products from postman!')
+    return 'List of Products' // this.http.get<any[]>(this.baseUrl + '/products')
+  }
+
+  getProductById(productId: any) {
+    console.log('This method will get product by id from postman')
+    console.log('Product Id: ' + productId)
+    return 'A single product' // this.http.get<any>(this.baseUrl + '/product/' + productId)
+  }
 }
