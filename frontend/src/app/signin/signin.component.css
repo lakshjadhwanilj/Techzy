@@ -16,17 +16,11 @@ body {
   height: 100%;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
 .form-signin {
   width: 100%;
   max-width: 330px;
   padding: 15px;
+  padding-bottom: 0;
   margin: auto;
 }
 
@@ -49,19 +43,23 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.forgot-signup{
-    margin-top: 20px;
-    text-align: left;
-}
+
 .forgot{
-    color:rgba(17, 17, 17, 0.562);
+  color:rgba(17, 17, 17, 0.562);
+  text-decoration: none;
 }
+
+.register {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
 .signup{
     margin-top: 50px;
     font-weight: bold;
     text-decoration: none;
-    color:blue;
 }
+
 .red-border{
   border: solid red 1px;
 }
