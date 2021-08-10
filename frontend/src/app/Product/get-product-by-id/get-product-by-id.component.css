@@ -1,0 +1,24 @@
+section {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.icons {
+    height: 150px;
+    max-width: auto;
+    object-fit: cover;
+    overflow: hidden;
+    background-size: contain;
+}
+
+figure:not(:first-child) {
+    display: none;
+}
+
+ul {
+    list-style: none;
+    display: inline-block;
+}
+
+li {
+    display: inline;
+}
