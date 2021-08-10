@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AddProductComponent } from './Product/add-product/add-product.component';
 import { UpdateProductComponent } from './Product/update-product/update-product.component';
-import { DeleteProductComponent } from './Product/delete-product/delete-product.component';
 import { GetProductByIdComponent } from './Product/get-product-by-id/get-product-by-id.component';
 import { GetAllProductsComponent } from './Product/get-all-products/get-all-products.component';
 
@@ -24,7 +23,6 @@ import { GetAllProductsComponent } from './Product/get-all-products/get-all-prod
     HomeComponent,
     AddProductComponent,
     UpdateProductComponent,
-    DeleteProductComponent,
     GetProductByIdComponent,
     GetAllProductsComponent
   ],
