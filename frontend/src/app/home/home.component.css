@@ -1,17 +1,30 @@
+.carousel-item {
+    height: 450px;
+}
 
 .carousel-item .active{
     display: flex;
 }
 
 .carousel img {
-    height: 80vh;
-    /* padding: 30px; */
-    /* margin: 40px; */
-    /* border-radius: 50%; */
+    height: 100%;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
 }
 
 .carousel-caption a{
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item {
+        height: 160px;
+    }
 }

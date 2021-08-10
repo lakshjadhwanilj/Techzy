@@ -1,7 +1,5 @@
-@media (max-width:767px) {
-    .border {
-        border: 0px solid !important;
-    }
+.f-section {
+    border-right: 2px solid #26C999;
 }
 
 .bg-image {
@@ -12,8 +10,9 @@
     overflow: hidden;
     background-size: contain;
 }
+
 .carousel-item {
-    height: 70vh;
+    height: 400px;
 }
 
 .carousel-item .active{
@@ -30,9 +29,10 @@
 }
 
 .carousel img {
-    height: 50vh;
+    height: 70%;
     padding: 30px;
-    margin: 20px;
+    padding-top: 15px;
+    margin: 10px;
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -40,4 +40,19 @@
 
 .carousel-caption a{
     margin: 0 auto;
+}
+
+@media (max-width:767px) {
+    .f-section {
+        border-right: 0px solid;
+        border-bottom: 2px solid #26C999;
+    }
+
+    .f-section p:last-child {
+        display: none;
+    }
+
+    .carousel-caption h3 {
+        font-size: 1.7rem;
+    }
 }
