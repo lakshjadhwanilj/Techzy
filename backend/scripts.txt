@@ -1,9 +1,3 @@
-Create TABLE USER_TYPE(
-userTypeId varchar(1),
-userTypeName varchar(10)
-)
-
-
 CREATE TABLE CONTACT_DETAILS(
 contactId number,
 primaryPhoneNo varchar(10),
@@ -119,4 +113,11 @@ paymentStatus varchar(10),
 userId number,
 paymentDate DATE,
 paymentTime TIMESTAMP
+)
+
+CREATE TABLE PHOTO_DETAILS(
+photoNo number,
+photoName varchar(15),
+photFormat varchar(5),
+photoSrc varchar(50)
 )
