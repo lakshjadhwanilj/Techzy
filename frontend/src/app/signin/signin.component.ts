@@ -13,8 +13,8 @@ export class SigninComponent implements OnInit {
   submitted: boolean = false;
   constructor(fb: FormBuilder) {
     this.signinform = fb.group({									
-            var_email: ['', Validators.required, Validators.email],									
-            var_password: ['', Validators.required]	
+            var_email: ['', [Validators.required]],									
+            var_password: ['',[ Validators.required]]	
     });
    }
 
@@ -30,11 +30,9 @@ export class SigninComponent implements OnInit {
      this.submitted = true;
      this.error = '';
      if(this.signinform.valid){
-      console.log('you submitted data: '+this.signinform.controls.var_email.value);
-     }
-     else{
-      this.error = "red-border";
-       console.log('There is problem with the form');
+      console.log('email: '+this.signinform.controls.var_email.value);
+      console.log('password: '+this.signinform.controls.var_password.value);
+      this.signinform.reset();
      }
    }
 

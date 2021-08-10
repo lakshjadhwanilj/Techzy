@@ -6,35 +6,18 @@
         <h1 class="h3 mb-3 fw-normal">Sign in into your account</h1>
     
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [formControlName]="'var_email'">
+          <input type = "email" class="form-control" id="floatingInput" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
           <label for="floatingInput">Email address</label> 
           <!-- validation -->
-          <!-- <div *ngIf="signinform.controls.var_email.errors" class="error">											
-            <div class="text-danger" *ngIf="signinform.controls.var_email.errors.required">Email is required</div>											
-          </div>	 -->
-          <!-- <div *ngIf="!var_email?.valid && (var_email?.dirty ||var_email?.touched)"> -->
-            <div *ngIf=" submitted && (var_email?.dirty || var_email?.errors)">		
-                <div class="text-danger" *ngIf="signinform.controls.var_email.errors?.required || signinform.controls.var_email.errors?.email">
-                    Enter valid Email 
-                </div>
-                <!-- <div *ngIf="signinform.controls.var_email.errors?.email">
-                    Enter valid email id
-                </div>  -->
-          </div> 
+          <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" [class]="error" id="floatingPassword" placeholder="Password" [formControlName]="'var_password'">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [formControlName]="'var_password'">
           <label for="floatingPassword">Password</label>
-          <div *ngIf=" submitted && (var_password?.dirty || var_password?.errors)">		
-            <div class="text-danger" *ngIf="signinform.controls.var_password.errors?.required">
-                Password is required
-            </div>
-            <!-- <div *ngIf="signinform.controls.var_password.errors?.minlength">
-                Password should be of min 8 characters
-            </div>   -->
+          <!-- validation -->
+          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
       </div> 
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+        <button [disabled] = signinform.invalid class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
         <div class = "forgot-signup">
         <a class = "forgot" routerLink = "/forgotpassword" >Forgot Password?</a><br>
         <a class="signup" routerLink = "/signup">Don't have an account? Register here</a>
