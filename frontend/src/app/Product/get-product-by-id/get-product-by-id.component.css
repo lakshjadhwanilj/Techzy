@@ -1,0 +1,16 @@
+section {
+    font-family: 'Roboto Mono', monospace;
+}
+
+figure:not(:first-child) {
+    display: none;
+}
+
+ul {
+    list-style: none;
+    display: inline-block;
+}
+
+li {
+    display: inline;
+}
