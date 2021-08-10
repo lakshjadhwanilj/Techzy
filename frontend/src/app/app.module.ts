@@ -13,7 +13,6 @@ import { UpdateProductComponent } from './Product/update-product/update-product.
 import { DeleteProductComponent } from './Product/delete-product/delete-product.component';
 import { GetProductByIdComponent } from './Product/get-product-by-id/get-product-by-id.component';
 import { GetAllProductsComponent } from './Product/get-all-products/get-all-products.component';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
