@@ -11,7 +11,7 @@ public interface ContactDao {
 	
 	public List<ContactDetails> getContactList();
 	
-	public ContactDetails findContactById(int contactId);
+	public ContactDetails findContactById(int userId);
 	
 	public String updateContact(int contactId, ContactDetails contact);
 	

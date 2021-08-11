@@ -27,8 +27,8 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
-	public ContactDetails findContactById(int contactId) {
-		ContactDetails contact = contactDao.findContactById(contactId);
+	public ContactDetails findContactById(int userId) {
+		ContactDetails contact = contactDao.findContactById(userId);
 		return contact;
 	}
 

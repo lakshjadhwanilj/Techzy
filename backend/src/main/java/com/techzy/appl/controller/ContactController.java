@@ -34,12 +34,6 @@ public class ContactController {
 		User user = userService.findUserById(userId);
 		user.setCd(contact);
 		userService.updateUser(userId, user);
-//		int tempId = contact.getUserId();
-//		User user = userService.findUserById(tempId);
-//		ContactDetails contact1 = new ContactDetails(contact.getPrimaryPhoneNo(),contact.getSecondaryPhoneNo(),contact.getPrimaryAddress(),contact.getShippingAddress());
-//		user.setCd(contact1);
-//		userService.updateUser(user.getUserId(),user);
-		//contactService.createContact(contact);
 	}
 	
 	@GetMapping("/contacts")
@@ -48,9 +42,9 @@ public class ContactController {
 		return contactList;
 	}
 	
-	@GetMapping(path = "/contact/{id}" , produces = "application/json")
-	public ContactDetails findContactById(@PathVariable(value="id")int contactId) {
-		return contactService.findContactById(contactId);
+	@GetMapping(path = "/contact/{userId}" , produces = "application/json")
+	public ContactDetails findContactById(@PathVariable(value="userId")int userId) {
+		return contactService.findContactById(userId);
 	}
 	
 	@PutMapping(path = "/updateContact/{userId}")
