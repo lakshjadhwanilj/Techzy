@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: GetAllProductsComponent },
   { path: 'products/:productId', component: GetProductByIdComponent },
-  { path: 'addnewproduct', component: AddProductComponent },
-  { path: 'editProduct/:productId', component: UpdateProductComponent },
+  { path: 'newProduct', component: AddProductComponent },
+  { path: 'updateProduct/:productId', component: UpdateProductComponent },
   { path: '**', component: HomeComponent }
 ];
 

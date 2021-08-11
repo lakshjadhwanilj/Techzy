@@ -30,7 +30,6 @@ export class ProductService {
 
    updateNewProduct(productId:number,product:Object)
    {
-    console.log(this.http.put<Product>(this.baseUrl+'/products/'+productId,product))
     return this.http.put<Product>(this.baseUrl+'/products/'+productId,product)
    }
 

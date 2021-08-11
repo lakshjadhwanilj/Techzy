@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from '../Product';
 
@@ -11,7 +12,7 @@ import { Product } from '../Product';
 export class AddProductComponent implements OnInit {
 
   product:Product = new Product();
-  submitted :boolean= false;
+  submitted:boolean= false;
   addProductForm:FormGroup;
   var_productType:string;
   var_productName:string;
@@ -20,9 +21,7 @@ export class AddProductComponent implements OnInit {
   var_productTotalQuantity:string;
   var_productInStock:string;
 
-
-
-  constructor(private productService: ProductService, fb:FormBuilder) { 
+  constructor(private productService: ProductService, fb:FormBuilder, private router: Router) { 
 
     this.addProductForm=fb.group({
       productType:'',
@@ -61,30 +60,34 @@ export class AddProductComponent implements OnInit {
     return this.addProductForm.get('productInStock');
   }
 
-
   newProduct(): void {
     this.submitted = false;
     this.product = new Product();
   }
- save() {
-  this.product.productDescription = this.addProductForm.controls.productDesc.value;
-  this.product.productType = this.addProductForm.controls.productType.value;
-  this.product.inStock = this.addProductForm.controls.productInStock.value;
-  this.product.totalQuantity = this.addProductForm.controls.productTotalQuantity.value;
-  this.product.productName = this.addProductForm.controls.productName.value;
-  this.product.productPrice =  this.addProductForm.controls.productPrice.value;
 
-  this.productService.addNewProduct(this.product).subscribe(data=> console.log(data))
-  this.product = new Product();
-  console.log("Product added" + this.product);
-  this.addProductForm.reset()
+  save() {
+    this.product.productDescription = this.addProductForm.controls.productDesc.value;
+    this.product.productType = this.addProductForm.controls.productType.value;
+    this.product.inStock = this.addProductForm.controls.productInStock.value;
+    this.product.totalQuantity = this.addProductForm.controls.productTotalQuantity.value;
+    this.product.productName = this.addProductForm.controls.productName.value;
+    this.product.productPrice =  this.addProductForm.controls.productPrice.value;
 
+    this.productService.addNewProduct(this.product).subscribe(data=> console.log(data))
+    this.product = new Product();
+    console.log("Product added" + this.product);
+    this.addProductForm.reset()
   }
+
   onSubmit() {
-   this.submitted = true;
-   
+    this.submitted = true;
     this.save();
- }
+  }
+
+  cancel(): void {
+    this.addProductForm.reset()
+    this.router.navigate(['home']);
+  }
 
 }
 

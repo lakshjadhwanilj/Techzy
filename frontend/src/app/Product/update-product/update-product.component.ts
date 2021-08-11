@@ -24,8 +24,6 @@ export class UpdateProductComponent implements OnInit {
   var_productTotalQuantity:string;
   var_productInStock:string;
 
-
-
   constructor(private activatedRoute: ActivatedRoute, private router: Router,private productService: ProductService, fb:FormBuilder) { 
 
     this.updateProductForm=fb.group({
@@ -45,8 +43,9 @@ export class UpdateProductComponent implements OnInit {
     })
     this.productService.getProductById(this.productId).subscribe(data =>{
       this.product = data;
-  })
-}
+    })
+  }
+
   get productType() {
     return this.updateProductForm.get('productType');
   }
@@ -71,7 +70,7 @@ export class UpdateProductComponent implements OnInit {
     return this.updateProductForm.get('productInStock');
   }
   save() {
-    // this.product.productDescription = this.updateProductForm.controls.productDescription.value;
+    this.product.productDescription = this.updateProductForm.controls.productDescription.value;
     this.product.productType = this.updateProductForm.controls.productType.value;
     this.product.inStock = this.updateProductForm.controls.productInStock.value;
     this.product.totalQuantity = this.updateProductForm.controls.productTotalQuantity.value;
@@ -87,8 +86,10 @@ export class UpdateProductComponent implements OnInit {
       this.save();
    }
    delete(){
-     console.log("Product Deleted")
-     console.log(this.productId)
-     this.productService.deleteProduct(this.productId)
+    //  console.log("Product Deleted")
+    //  console.log(this.productId)
+    this.productService.deleteProduct(this.productId).subscribe(data => console.log(data))
+    this.updateProductForm.reset()
+    this.router.navigate(['home']);
    }
 }
