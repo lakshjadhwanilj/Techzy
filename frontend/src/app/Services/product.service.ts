@@ -8,35 +8,30 @@ import { Product } from '../Product/Product';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8095/api/v1'
+  private baseUrl = 'http://localhost:8075/tech/v1'
 
   constructor(private http: HttpClient) { }
 
   getAllProducts() {
-    console.log('This method will get all products from postman!')
-    return 'List of Products' // this.http.get<any[]>(this.baseUrl + '/products')
+    return  this.http.get<any[]>(`${this.baseUrl}`+'/products')
   }
 
   getProductById(productId: any) {
-    console.log('This method will get product by id from postman')
-    console.log('Product Id: ' + productId)
-    return 'A single product' // this.http.get<any>(this.baseUrl + '/product/' + productId)
+    return this.http.get<any>(this.baseUrl + '/products/' + productId)
   }
   
   addNewProduct(product: Object): Observable<Object> {
-    console.log(this.http.post(`${this.baseUrl}`+'/addnewproduct',product))
-    return this.http.post(`${this.baseUrl}`+'/addnewproduct', product);
+    return this.http.post(`${this.baseUrl}`+'/products', product);
    }
 
-   deleteProduct(id:number){
-     console.log(this.http.delete<Product>(`${this.baseUrl}`+'/deleteProduct/'+id))
-     return this.http.delete<Product>(`${this.baseUrl}`+'/deleteProduct/'+id);
+   deleteProduct(productId:number){
+     return this.http.delete(`${this.baseUrl}`+'/products/'+productId);
    }
 
-  //  updateNewProduct(id:number)
-  //  {
-  //   this.product = getProductById(id)
-  //   console.log(this.http.put<Product>(this.baseUrl+'/updateProduct/'+id,this.product))
-  //  }
+   updateNewProduct(productId:number,product:Object)
+   {
+    console.log(this.http.put<Product>(this.baseUrl+'/products/'+productId,product))
+    return this.http.put<Product>(this.baseUrl+'/products/'+productId,product)
+   }
 
 }

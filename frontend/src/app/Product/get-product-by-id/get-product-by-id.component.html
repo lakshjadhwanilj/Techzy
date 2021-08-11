@@ -51,8 +51,8 @@
         </div>
 
         <div class="col-md-6 px-4">
-            <h3 class="h3">Apple Laptop</h3>
-            <p class="mb-2 text-muted text-uppercase small">Laptops</p>
+            <h3 class="h3">{{product.productName}}</h3>
+            <p class="mb-2 text-muted text-uppercase small">{{product.productType == "L" ? "Laptop" : "Mobile"}}</p>
             <ul class="rating p-0">
                 <li><i class="fas fa-star fa-sm success"></i></li>
                 <li><i class="fas fa-star fa-sm success"></i></li>
@@ -60,8 +60,8 @@
                 <li><i class="fas fa-star fa-sm success"></i></li>
                 <li><i class="far fa-star fa-sm success"></i></li>
             </ul>
-            <p><span class="me-1"><strong>$12.99</strong></span></p>
-            <p class="pt-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga harum minima, recusandae illo soluta libero laboriosam quae, quos consequuntur illum a unde eveniet hic facere enim consectetur veritatis, tempora quas.</p>
+            <p><span class="me-1"><strong>{{product.productPrice | currency: "INR"}}</strong></span></p>
+            <p class="pt-1">{{product.productDescription}}</p>
             <div class="table-responsive">
                 <table class="table table-sm table-borderless mb-0">
                     <tbody>
