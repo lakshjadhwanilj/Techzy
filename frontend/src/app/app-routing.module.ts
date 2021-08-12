@@ -8,6 +8,9 @@ import { AddProductComponent } from './Product/add-product/add-product.component
 import { UpdateProductComponent } from './Product/update-product/update-product.component';
 import { GetAllProductsComponent } from './Product/get-all-products/get-all-products.component';
 import { GetProductByIdComponent } from './Product/get-product-by-id/get-product-by-id.component';
+import { GetAllUsersComponent } from './user/get-all-users/get-all-users.component';
+import { UserbyIdComponent } from './user/userby-id/userby-id.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +22,11 @@ const routes: Routes = [
   { path: 'product/:productId', component: GetProductByIdComponent },
   { path: 'addNewProduct', component: AddProductComponent },
   { path: 'editProduct', component: UpdateProductComponent },
+  { path: 'users' , component: GetAllUsersComponent},
+  { path: 'user', component: UserbyIdComponent},
+  {path: 'userProfile/:userId', component: UserProfileComponent},
   { path: '**', component: HomeComponent }
+
 ];
 
 @NgModule({
