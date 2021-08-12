@@ -21,7 +21,7 @@
                             <form [formGroup] = "cartItemForm">
                                 <div class="w-50 input-group my-2">
                                     <button class="btn btn-sm btn-outline-success" type="button" (click)="decrement()"><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="form-control" placeholder="" [formControlName]="'newQuantity'" readonly [(ngModel)]="quan"> 
+                                    <input type="text" class="form-control" placeholder="" [formControlName]="'newQuantity'" readonly> 
                                     <button class="btn btn-sm btn-outline-success" type="button" (click)="increment()"><i class="fas fa-plus"></i></button>
                                 </div>
                                 </form>
