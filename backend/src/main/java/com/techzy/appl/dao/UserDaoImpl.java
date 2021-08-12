@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.techzy.appl.beans.User;
 
-
 @Repository("userDao")
 @EnableTransactionManagement
 public class UserDaoImpl implements UserDao{
@@ -59,6 +58,12 @@ public class UserDaoImpl implements UserDao{
 		User user = em.find(User.class, userId);
 		em.remove(user);
 		return "Record deleted";
+	}
+
+	@Override
+	public String findUserTypeById(int userId) {
+		User user = em.find(User.class, userId);
+		return user.getUserType();
 	}
 
 	

@@ -16,6 +16,7 @@ public interface UserDao {
 	public String updateUser(int userId, User newUser);
 	
 	public String deleteUser(int userId);
-
+	
+	public String findUserTypeById(int userId);
 
 }

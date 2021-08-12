@@ -30,5 +30,5 @@ export class UserService {
       console.log(this.http.post(`${this.baseUrl}`+'addnewuser', user))
       return this.http.post(`${this.baseUrl}`+'addnewuser', user);
   }
-    
+  
 }
