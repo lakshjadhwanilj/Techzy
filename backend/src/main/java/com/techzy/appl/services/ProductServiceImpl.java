@@ -9,32 +9,35 @@ import com.techzy.appl.beans.Product;
 import com.techzy.appl.dao.ProductDao;
 
 @Service("prdService")
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	private ProductDao prdDao;
+	private ProductDao productDao;
 
 	@Override
-	public Product createProduct(Product p) {
-		Product newProduct = prdDao.createProduct(p);
-		return newProduct;
+	public String createProduct(Product p) {
+		return productDao.createProduct(p);
 	}
 
 	@Override
-	public List<Product> getAll() {
-		List<Product> productList = prdDao.getAll();
-		System.out.println(productList);
-		return productList;
+	public List<Product> getProductList() {
+		return productDao.getProductList();
 	}
 
 	@Override
-	public Product findById(int id) {
-		Product p = prdDao.findById(id);
-		return p;
+	public Product findProductById(int productId) {
+		return productDao.findProductById(productId);
 	}
 
-	
-	
-	
+	@Override
+	public String updateProduct(int productId, Product newProduct) {
+
+		return productDao.updateProduct(productId, newProduct);
+	}
+
+	@Override
+	public String deleteProduct(int productId) {
+		return productDao.deleteProduct(productId);
+	}
 
 }

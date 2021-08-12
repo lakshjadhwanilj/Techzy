@@ -3,54 +3,66 @@ package com.techzy.appl.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.techzy.appl.beans.Product;
 
 @Repository("prdDao")
+@EnableTransactionManagement
 public class ProductDaoImpl implements ProductDao{
 
-	private static List<Product> productList = new ArrayList<>();
-
-	public ProductDaoImpl() {
-		productList.add(new Product(101, "Mobile", "Realme 5 Pro", 30000, 45, 30));
-		productList.add(new Product(102, "Laptop", "Lenovo", 60000, 45, 40));
-		productList.add(new Product(103, "Charger", "Samsung", 200, 15, 10));
-		productList.add(new Product(104, "Powerbank", "Portronics", 1000, 35, 30));
-	}
-
+	@PersistenceContext
+	private EntityManager em;
+	
 	@Override
-	public Product createProduct(Product p) {
-		productList.add(p);
-		return p;
+	@Transactional
+	public String createProduct(Product p) {
+		
+		System.out.println("Dao Layer "+ p);
+		em.persist(p);
+		return "Product Added";
 	}
 
 	@Override
-	public List<Product> getAll() {
-		return productList;
+	public List<Product> getProductList() {
+		
+		return em.createQuery("Select p from Product p").getResultList();
 	}
-/////////////////////////////
+
 	@Override
-	public Product findById(int id) {
-		Product foundProduct = new Product();
-//		for(Product p : productList) {
-//			if(p.getProductId() == id) {
-//				foundProduct =  p;
-//				return foundProduct;
-//				break;
-//			} 
-//			else {
-//				foundProduct=null;
-//			}
-//		}
-		return foundProduct;
+	public Product findProductById(int productId) {
+		return em.find(Product.class, productId);
 	}
-/////////////////////////////
-	
-	
-	
-	
-	
+
+	@Override
+	@Transactional
+	public String updateProduct(int productId, Product newProduct) {
+		Product product = em.find(Product.class, productId);
+		product.setBrandId(newProduct.getBrandId());
+		product.setInStock(newProduct.getInStock());
+		product.setProductDescription(newProduct.getProductDescription());
+		product.setProductName(newProduct.getProductName());
+		product.setProductPrice(newProduct.getProductPrice());
+		product.setTotalQuantity(newProduct.getTotalQuantity());
+		product.setProductType(newProduct.getProductType());
+		em.merge(product);
+		return "Product Updated";
+	}
+
+	@Override
+	@Transactional
+	public String deleteProduct(int productId) {
+		Product product = em.find(Product.class, productId);
+		em.remove(product);
+		return "Product Deleted";
+	}
+
+
 	
 
 }

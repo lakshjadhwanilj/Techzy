@@ -1,1 +1,35 @@
-<p>signup works!</p>
+<body class="text-center">
+    
+    <main class="form-signup">
+      <form [formGroup] = "signupform" (ngSubmit) = "onSubmit()">
+        <img class="mb-4" src="assets/logo/logo_light.png" alt="Techzy" width="80" height="75">
+        <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+    
+        <div class="form-floating">
+          <input type = "text" class="form-control" id="floatingInput"  placeholder="Name" [formControlName]="'var_name'">
+          <label for="floatingInput">Name</label> 
+           <!-- validation  -->
+          <small *ngIf = "var_name?.invalid && var_name?.touched" class = "text-danger">Name is required</small>
+        </div>
+
+        <div class="form-floating">
+          <input type = "email" class="form-control" id="floatingInput" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
+          <label for="floatingInput">Email address</label> 
+           <!-- validation  -->
+          <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" pattern = "^[A-Za-z]\w{7,14}$" placeholder="Password" [formControlName]="'var_password'">
+          <label for="floatingPassword">Password</label>
+          <!-- validation  -->
+          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
+      </div> 
+        <button [disabled] = signupform.invalid class="w-100 btn btn-lg button-success" type="submit">Sign up</button>
+        <div class = "signin">
+        <a class = "signin success" routerLink = "/signin" >Sign-in</a><br>
+        
+        </div>
+      </form>
+    </main>
+    <router-outlet></router-outlet>
+    

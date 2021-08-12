@@ -12,6 +12,10 @@ import { AddProductComponent } from './Product/add-product/add-product.component
 import { UpdateProductComponent } from './Product/update-product/update-product.component';
 import { GetProductByIdComponent } from './Product/get-product-by-id/get-product-by-id.component';
 import { GetAllProductsComponent } from './Product/get-all-products/get-all-products.component';
+import { GetAllUsersComponent } from './user/get-all-users/get-all-users.component';
+import { UserbyIdComponent } from './user/userby-id/userby-id.component';
+import { NavComponent } from './nav/nav.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { GetAllProductsComponent } from './Product/get-all-products/get-all-prod
     AddProductComponent,
     UpdateProductComponent,
     GetProductByIdComponent,
-    GetAllProductsComponent
+    GetAllProductsComponent,
+    GetAllUsersComponent,
+    UserbyIdComponent,
+    NavComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

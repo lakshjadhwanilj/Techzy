@@ -1,64 +1,69 @@
-<!-- <p>update-product works!</p> -->
 <div class="container">
-    <div class="mt-4">
-        <h3>Update Product</h3>
+    <div class="my-4">
+        <h3 class="h3">Update your {{product.productName}}</h3>
     </div>
     <div class="mt-3">
-        <form action="">
+        <form [formGroup] ="updateProductForm" > 
+          <!-- (ngSubmit) = "onSubmit()" -->
             <div class="row">
-                <div class="col-md">
+                <div class="col-md-6 col-lg-4 mb-3">
                   <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
-                    <label for="floatingInputGrid">Product Id</label>
+                    <select class="form-select" id="floatingSelectGrid" aria-label="" [formControlName]  ="'productType'" [(ngModel)]="product.productType">
+                      <option selected value="">Select Product Type</option>
+                      <option value="M">Mobile</option>
+                      <option value="L">Laptop</option>
+                    </select>
                   </div>
                 </div>
-                <div class="col-md">
+                <div class="col-md-6 col-lg-4 mb-3">
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
+                      <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="" [formControlName]  ="'productName'" [(ngModel)]="product.productName">
                       <label for="floatingInputGrid">Product Name</label>
                     </div>
-                  </div>
-                  <div class="col-md">
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value="">
+                      <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value="" [formControlName]  ="'productDescription'" [(ngModel)]="product.productDescription">
                       <label for="floatingTextarea">Product Description</label>
                     </div>
-                  </div>
-              </div>
-
-              <div class="row mt-3">
-                <div class="col-md">
+                </div>
+            <!-- </div> -->
+              <!-- <div class="row mt-3"> -->
+                <div class="col-md-6 col-lg-4 mb-3">
                   <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="">
+                    <input type="text" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="" [formControlName]  ="'productPrice'" [(ngModel)]="product.productPrice">
                     <label for="floatingInputGrid">Product Price</label>
                   </div>
                 </div>
-                <div class="col-md">
+                <div class="col-md-6 col-lg-4 mb-3">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="">
-                            <option selected>Select Total Quantity</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="form-select" id="floatingSelectGrid" aria-label=""  [formControlName]  ="'productTotalQuantity'" [(ngModel)]="product.totalQuantity">
+                            <option selected value="">Select Total Quantity</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
                           </select>
                     </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingTextarea" placeholder="name@example.com" value="" [formControlName]  ="'productInStock'" [(ngModel)]="product.inStock">
+                    <label for="floatingTextarea">No.of Products in stock</label>
                   </div>
-                  <div class="col-md">
-                    <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value="">
-                      <label for="floatingTextarea">No.of Products in stock</label>
-                    </div>
-                  </div>
+                </div>
               </div>
-              <div class="row mt-4" >
-                  <div class="col-sm-3 ms-auto">
-                    <button class="w-100 btn btn-lg button-success text-uppercase" type="submit">Update Product</button>
-                  </div>
-                  <div class="col-sm-3 me-auto">
-                    <button class="w-100 btn btn-lg button-success text-uppercase" type="submit">delete Product</button>
+              <div class="mb-4 d-flex justify-content-center flex-row">
+                <div class="mx-3">
+                  <button class="btn btn-danger text-uppercase" type="" (click)="delete()"><i class="fas fa-trash"></i> Delete</button>
+                </div>
+                  <div class="mx-3">
+                    <button class="btn button-success text-uppercase" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Update</button>
                   </div>
               </div>
         </form>
+        <div [hidden]="!submitted">
+          <p>Product Updated Successfully</p>
+        </div>
     </div>
 </div>
 
