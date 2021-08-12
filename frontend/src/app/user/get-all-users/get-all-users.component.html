@@ -1,4 +1,4 @@
-<h3 class="p-3 text-center">Angular - Display a list of Users</h3>
+<h3 class="p-3 text-center">List of Registered Users</h3>
 <div class="container">
     <table class="table table-striped table-bordered">
         <thead>
@@ -7,6 +7,8 @@
                 <th>User Name</th>
                 <th>User Email</th>
                 <th>User Type</th>
+                <th>update</th>
+                <th>Delete</th>
                 <!-- <th>Primary Phone Number</th>
                 <th>Secondary Phone Number</th>
                 <th>Primary Address</th>
@@ -15,19 +17,28 @@
                  
                   
             </tr>
+
         </thead>
         <tbody>
               <tr *ngFor="let u of userList;">              
                 <td> {{u.userId}} </td>
                 <td> {{u.userName}} </td>
                 <td> {{u.userEmail}} </td> 
-                <td> {{u.userType}} </td>  
+                <td> {{u.userType}}</td>  
+                <td> <button class="btn btn-warning" [disabled]="u.userType=='R'" (click)="updateUserType(u)" style="margin-left: 20px;">Update</button>
+                </td>
+                <td> <button class="btn btn-danger" (click)="deleteUser(u.userId)" style="margin-left: 20px;">Delete</button></td>
                 <!-- <td> {{u.contactDetails.getPrimaryPhoneNo()}} </td>  
                 <td> {{u.contactDetails.secondaryPhoneNo}} </td>  
                 <td> {{u.contactDetails.primaryAddress}} </td>   -->
                 <!-- <td> {{u.contactDetails.shippingAddress}} </td>                          -->
                
             </tr>
+            <tr *ngIf="!userList || userList.length==0">										
+                <th colspan="6">										
+                  <p class="text-right text-danger">Sorry No Users Available</p>										
+                </th>										
+              </tr>	
 
         </tbody>
     </table>

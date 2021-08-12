@@ -61,6 +61,12 @@ public class UserDaoImpl implements UserDao{
 		return "Record deleted";
 	}
 
+	@Override
+	public String findUserTypeById(int userId) {
+		User user = em.find(User.class, userId);
+		return user.getUserType();
+	}
+
 	
 	
 

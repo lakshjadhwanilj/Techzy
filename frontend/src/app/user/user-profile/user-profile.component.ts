@@ -97,6 +97,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.subject=this.activatedRoute.paramMap.subscribe(params=>{this.userId=params.get('userId')})
     this.userService.getUserById(this.userId).subscribe(data=>{this.userObj=data})
+    
     //  const userEmail=sessionStorage.getItem("userEmail");
     // const userId=sessionStorage.getItem("userId");
    

@@ -9,4 +9,5 @@ export class User
   userType : string='C';
   contactDetails : ContactDetails;
   
+  
 }
