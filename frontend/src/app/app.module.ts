@@ -16,6 +16,7 @@ import { GetAllUsersComponent } from './user/get-all-users/get-all-users.compone
 import { UserbyIdComponent } from './user/userby-id/userby-id.component';
 import { NavComponent } from './nav/nav.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart-items.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     GetAllUsersComponent,
     UserbyIdComponent,
     NavComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    GetAllCartItemsComponent
   ],
   imports: [
     BrowserModule,

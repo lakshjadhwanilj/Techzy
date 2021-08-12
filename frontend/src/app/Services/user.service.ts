@@ -20,15 +20,21 @@ export class UserService {
    getUserById(id: number){
     return this.http.get<any>(this.baseUrl+'user/'+id);
   }
-  updateUser(userId:number,user:User)
+  updateUser(userId:number,user:Object)
    {
     console.log(this.http.put<User>(this.baseUrl+'updateUser/'+userId,user))
     return this.http.put<User>(this.baseUrl+'updateUser/'+userId,user)
    }
 
+   deleteUser(userId: number) {					
+    return this.http.delete(this.baseUrl + 'deleteUser/' + userId);					
+   }		
     createUser(user: User) {
       console.log(this.http.post(`${this.baseUrl}`+'addnewuser', user))
       return this.http.post(`${this.baseUrl}`+'addnewuser', user);
+  } 
+  getUserTypeById(id: number){
+    return this.http.get<any>(this.baseUrl+'findUserType/'+id);
   }
   
 }
