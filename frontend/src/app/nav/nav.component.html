@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart success"></i> Cart</a>
+                        <a class="nav-link" routerLink="cartItems/{{userIdNum}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="signin" ><i class="fas fa-sign-in-alt success"></i> Login</a>
@@ -64,9 +64,9 @@
     
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a routerLink="/" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">All Categories</a></li>
+            <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">Products</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Compare</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Cart</a></li>
+            <li class="nav-item"><a routerLink="cartItems/{{userIdNum}}" class="nav-link px-2 text-muted">Cart</a></li>
             <li class="nav-item"><a routerLink="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
     </footer>

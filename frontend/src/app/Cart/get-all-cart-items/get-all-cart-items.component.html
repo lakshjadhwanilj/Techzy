@@ -1,0 +1,48 @@
+<div class="container px-4">
+    <div class="row mt-4">
+        <h3>Shopping Cart</h3>
+    <p class="lead">You have {{cartList.length}} items in your cart.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Quantity</th>
+                        <th>Cost</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of cartList">
+                        <th class="my-2 align-middle">{{c.productId}}</th>
+                        <td>
+                            <form [formGroup] = "cartItemForm">
+                                <div class="w-50 input-group my-2">
+                                    <button class="btn btn-sm btn-outline-success" type="button" (click)="decrement()"><i class="fas fa-minus"></i></button>
+                                    <input type="text" class="form-control" placeholder="" [formControlName]="'newQuantity'" readonly> 
+                                    <button class="btn btn-sm btn-outline-success" type="button" (click)="increment()"><i class="fas fa-plus"></i></button>
+                                </div>
+                                </form>
+                            </td>
+                            <td class="my-2 align-middle">{{c.totalCost | currency:"INR"}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-outline-success m-2" (click)="updateQuantity(c)">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-outline-danger m-2" (click)="onDelete(c.cartItemId)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4 px-4">
+            <h3>Total:</h3>
+            <h2>{{finalCost}}</h2>
+            <button class="btn button-success btn-lg w-100 text-uppercase py-3">Checkout</button>
+        </div>
+    </div>
+</div>

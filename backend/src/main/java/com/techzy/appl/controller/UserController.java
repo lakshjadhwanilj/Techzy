@@ -45,6 +45,11 @@ public class UserController {
 		return userService.findUserById(userId);
 	}
 	
+	@GetMapping(path = "/findUserType/{id}" , produces = "application/json")
+	public String findUserTypeByID(@PathVariable(value="id")int userId) {
+		return userService.findUserTypeById(userId);
+	}
+	
 	@PutMapping(path = "/updateUser/{userId}")
 	public void updateUser(@PathVariable(value="userId") int userId, @RequestBody User u) {
 		userService.updateUser(userId, u);

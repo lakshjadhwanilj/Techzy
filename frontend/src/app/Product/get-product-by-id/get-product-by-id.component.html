@@ -81,11 +81,11 @@
                 </table>
             </div>
             <hr>
-            <button type="button" class="btn button-success text-uppercase px-4 me-1 mb-2">
+            <!-- <button type="button"  class="btn button-success text-uppercase px-4 me-1 mb-2">
                 Buy now
-            </button>
-            <button type="button" class="btn success text-uppercase px-4 me-1 mb-2">
-                <i class="fas fa-shopping-cart pr-2"></i> Add to cart
+            </button> -->
+            <button type="button" (click)="addToCart(product)" class="btn button-success text-uppercase px-4 me-3 mb-2">
+                <i class="fas fa-shopping-cart"></i> Add to cart
             </button>
             <button type="button" class="btn btn-danger text-uppercase px-4 me-1 mb-2">
                 <i class="fas fa-heart"></i> wishlist
