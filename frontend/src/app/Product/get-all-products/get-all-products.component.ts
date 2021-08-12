@@ -15,11 +15,13 @@ export class GetAllProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData()
+    
   }
 
   loadData() {
-    this.productService.getAllProducts()//.subscribe(data => {
-    //   this.productList = data
-    // })
+    this.productService.getAllProducts().subscribe(data => {
+       this.productList = data;
+       console.log(this.productList);
+     })
   }
 }

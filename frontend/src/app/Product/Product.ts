@@ -5,4 +5,5 @@ export class Product {
     productPrice: number = 0
     totalQuantity: number = 0
     inStock: number = 0
+    productType:string = ""
 }

@@ -19,12 +19,12 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'products', component: GetAllProductsComponent },
-  { path: 'product/:productId', component: GetProductByIdComponent },
-  { path: 'addNewProduct', component: AddProductComponent },
-  { path: 'editProduct', component: UpdateProductComponent },
   { path: 'users' , component: GetAllUsersComponent},
   { path: 'user', component: UserbyIdComponent},
   {path: 'userProfile/:userId', component: UserProfileComponent},
+  { path: 'products/:productId', component: GetProductByIdComponent },
+  { path: 'newProduct', component: AddProductComponent },
+  { path: 'updateProduct/:productId', component: UpdateProductComponent },
   { path: '**', component: HomeComponent }
 
 ];

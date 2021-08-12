@@ -6,10 +6,14 @@ import com.techzy.appl.beans.Product;
 
 public interface ProductService {
 
-	public Product createProduct(Product p);
-
-	public List<Product> getAll();
-
-	public Product findById(int id);
+public String createProduct(Product p);
+	
+	public List<Product> getProductList();
+	
+	public Product findProductById(int productId);
+	
+	public String updateProduct(int productId, Product newProduct);
+	
+	public String deleteProduct(int productId);
 
 }

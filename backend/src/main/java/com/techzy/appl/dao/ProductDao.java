@@ -1,18 +1,19 @@
 package com.techzy.appl.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.techzy.appl.beans.Product;
 
 public interface ProductDao {
 	
-	public Product createProduct(Product p);
+	public String createProduct(Product p);
 	
-	public List<Product> getAll();
+	public List<Product> getProductList();
 	
-	public Product findById(int id);
+	public Product findProductById(int productId);
 	
-	//public Product updateProduct(int id, Product p);
+	public String updateProduct(int productId, Product newProduct);
+	
+	public String deleteProduct(int productId);
 	
 }
