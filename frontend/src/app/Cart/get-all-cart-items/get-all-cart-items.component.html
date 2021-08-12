@@ -1,0 +1,12 @@
+<!-- <p>get-all-cart-items works!</p> -->
+<div *ngFor = "let c of cartList">
+    <form [formGroup] = "cartItemForm">
+        <input type="text" [formControlName] = "'newQuantity'">
+        <button (click)="updateQuantity(c)">Update</button>
+        <button (click)="onDelete(c.cartItemId)">Delete</button>
+    </form>
+    
+    <p>{{c.productId}}</p>
+    <p>{{c.userId}}</p>
+    <p>{{c.totalCost}}</p>
+</div>
