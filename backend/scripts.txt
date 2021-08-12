@@ -94,7 +94,6 @@ userId number
 )
 
 CREATE TABLE CART_ITEM(
-
 cartItemId number,
 quantity number,
 totalCost number(10,2),
