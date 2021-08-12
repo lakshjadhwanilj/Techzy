@@ -1,28 +1,63 @@
 <body class="text-center">
-    
-    <main class="form-signin">
-      <form [formGroup] = "signinform" (ngSubmit) = "onSubmit()">
-        <img class="mb-4" src="assets/logo/logo_light.png" alt="Techzy" width="80" height="75">
-        <h1 class="h3 mb-3 fw-normal">Sign in into your account</h1>
-    
-        <div class="form-floating">
-          <input type = "email" class="form-control" id="floatingInput" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
-          <label for="floatingInput">Email address</label> 
-          <!-- validation -->
-          <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [formControlName]="'var_password'">
-          <label for="floatingPassword">Password</label>
-          <!-- validation -->
-          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
-      </div> 
-        <button [disabled] = signinform.invalid class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
-        <div class = "forgot-signup">
-        <a class = "forgot" routerLink = "/forgotpassword" >Forgot Password?</a><br>
-        <a class="signup" routerLink = "/signup">Don't have an account? Register here</a>
-        </div>
-      </form>
-    </main>
-    <router-outlet></router-outlet>
-    
+  <main class="form-signin">
+    <form [formGroup]="signinform" (ngSubmit)="onSubmit()">
+      <img
+        class="mb-4"
+        src="assets/logo/logo_light.png"
+        alt="Techzy"
+        width="80"
+        height="75"
+      />
+      <h1 class="h3 mb-3 fw-normal">Sign in into your account</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"
+          placeholder="name@example.com"
+          [formControlName]="'var_email'"
+        />
+        <label for="floatingInput">Email address</label>
+        <!-- validation -->
+        <small
+          *ngIf="var_email?.invalid && var_email?.touched"
+          class="text-danger"
+          >Email is not valid</small
+        >
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          [formControlName]="'var_password'"
+        />
+        <label for="floatingPassword">Password</label>
+        <!-- validation -->
+        <small
+          *ngIf="var_password?.invalid && var_password?.touched"
+          class="text-danger"
+          >Password is required</small
+        >
+      </div>
+      <button
+        [disabled]="signinform.invalid"
+        class="w-100 btn btn-lg btn-primary"
+        type="submit"
+      >
+        Log in
+      </button>
+      <div class="forgot-signup">
+        <a class="forgot" routerLink="/forgotpassword">Forgot Password?</a
+        ><br />
+        <a class="signup" routerLink="/signup"
+          >Don't have an account? Register here</a
+        >
+      </div>
+    </form>
+  </main>
+  <router-outlet></router-outlet>
+</body>
