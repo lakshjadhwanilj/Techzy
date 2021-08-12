@@ -11,47 +11,70 @@ import { CartItem } from '../CartItem';
 })
 export class GetAllCartItemsComponent implements OnInit {
 
-  subject:any;
-  userId:any;
-  cartList:CartItem[]=[];
-  quantity:string;
-  cartItemForm:FormGroup;
-  newCartItem:CartItem;
-  constructor(fb:FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,private cartService:CartService) { 
+  subject: any
+  userId: any
 
+  cartList: CartItem[] = []
+  quantity: string
+  
+  cartItemForm: FormGroup
+  newCartItem: CartItem
+
+  quantityList: any
+
+  finalCost: number
+  
+  constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private cartService: CartService) {
     this.cartItemForm = fb.group({
       newQuantity: ''
     })
   }
 
   ngOnInit(): void {
-
     this.loadData()
+  
+    // for (let c of this.cartList) {
+    //   this.finalCost += c.totalCost
+    // }
   }
-loadData(){
-  this.subject = this.activatedRoute.paramMap.subscribe(params => {
-    this.userId = params.get('userId')
-  })
+  
+  loadData() {
+    this.subject = this.activatedRoute.paramMap.subscribe(params => {
+      this.userId = params.get('userId')
+    })
 
-  this.cartService.getAllCartItemsByUserId( this.userId ).subscribe(data=>{
-    this.cartList = data;
-    console.log(this.cartList)
-  })
-}
-onDelete(cartItemId:number)
-{
-  this.cartService.deleteCartItem(cartItemId).subscribe(data=>console.log(data))
-}
+    this.cartService.getAllCartItemsByUserId(this.userId).subscribe(data => {
+      this.cartList = data
+    })
 
+    this.cartService.getCartItemsQuantity().subscribe(data => {
+      this.quantityList = data
+    })
 
-get newQuantity(){
-  return this.cartItemForm.get('newQuantity')
-}
+    this.cartService.getFinalCost().subscribe(data => {
+      this.finalCost = data
+    })
+  }
 
-updateQuantity(cartItem: CartItem)
-{
-  cartItem.quantity = this.cartItemForm.controls.newQuantity.value;
-  this.cartService.updateCartItemQuantity(cartItem.cartItemId,cartItem).subscribe(data=>console.log(data))
-}
+  onDelete(cartItemId: number) {
+    this.cartService.deleteCartItem(cartItemId).subscribe(data => console.log(data))
+  }
+
+  get newQuantity() {
+    return this.cartItemForm.get('newQuantity')
+  }
+
+  updateQuantity(cartItem: CartItem) {
+    cartItem.quantity = this.cartItemForm.controls.newQuantity.value
+    this.cartService.updateCartItemQuantity(cartItem.cartItemId, cartItem).subscribe(data => console.log(data))
+  }
+
+  increment() {
+    this.cartService.getFinalCost()
+  }
+  
+  decrement() {
+    this.cartService.updateCartItemsQuantity(this.quantityList - 1)
+  }
 
 }
