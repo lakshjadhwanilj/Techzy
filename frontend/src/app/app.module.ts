@@ -19,6 +19,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart-items.component';
 import { AddContactDetailsComponent } from './user/contact-details/add-contact-details/add-contact-details.component';
 import { UpdateContactDetailsComponent } from './user/contact-details/update-contact-details/update-contact-details.component';
+import { GetAllWishListItemsComponent } from './WishList/get-all-wish-list-items/get-all-wish-list-items.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UpdateContactDetailsComponent } from './user/contact-details/update-con
     UserProfileComponent,
     GetAllCartItemsComponent,
     AddContactDetailsComponent,
-    UpdateContactDetailsComponent
+    UpdateContactDetailsComponent,
+    GetAllWishListItemsComponent
   ],
   imports: [
     BrowserModule,

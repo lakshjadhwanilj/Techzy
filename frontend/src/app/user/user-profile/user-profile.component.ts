@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/Product/Product';
+import { ProductService } from 'src/app/Services/product.service';
 import { UserService } from 'src/app/Services/user.service';
+import { WishListService } from 'src/app/Services/wish-list.service';
+import { WishListItems } from 'src/app/WishList/get-all-wish-list-items/WishListItems';
 import { User } from '../User';
 
 
@@ -11,7 +15,13 @@ import { User } from '../User';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+/*************************   wishlist part ***************************** */
+  subject_wish: any;
+  wishList: WishListItems[]=[];
+  productList:any[] = [];
+  product:Product = new Product()
 
+//******************user part************* */
   user:User = new User();
   userName: string;
   userEmail: string;
@@ -20,9 +30,6 @@ export class UserProfileComponent implements OnInit {
   userIdConst: any;
   subject: any;
   userId: any;
-
-  
-
   userObj: User = new User();
   userIdNum : number;
 
@@ -30,7 +37,7 @@ export class UserProfileComponent implements OnInit {
   updateUserProfileForm:FormGroup;
   error:string = '';
   submitted: boolean = false;
-  constructor(fb: FormBuilder, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(fb: FormBuilder,private productService: ProductService, private wishListService:WishListService, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.updateUserProfileForm = fb.group({	
             var_name:	['',[ Validators.required]],							
             var_email: ['', [Validators.required]],									
@@ -99,7 +106,24 @@ export class UserProfileComponent implements OnInit {
       this.userIdNum = Number(userId);	
       this.getUser(this.userIdNum);	
     }
-  }
+    //this.subject=this.activatedRoute.paramMap.subscribe(params=>{this.userId=params.get('userId')})
+    //this.userService.getUserById(this.userId).subscribe(data=>{this.userObj=data})
+    
+    // this.subject_wish = this.activatedRoute.paramMap.subscribe(params => {
+    //   this.userId = params.get('userId')
+    // })
 
+    this.wishListService.getAllWishListItemsByUserId(this.userIdNum).subscribe(data => {
+      this.wishList = data
+    })
+    
+  }
+  onDelete(wishListItemId: number) {
+    this.wishListService.deleteWishListItem(wishListItemId).subscribe(data =>{
+      this.ngOnInit()
+      console.log(data)
+    } )
+    
+  }
 
 }

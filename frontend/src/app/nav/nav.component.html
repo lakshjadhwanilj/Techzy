@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" routerLink="/">
-                <img src="assets/logo/logo_green.png" alt="" width="50" height="50" class="d-inline-block mx-2">
+                <img src="assets/logo/logo_green.png" alt="Techzy" width="50" height="50" class="d-inline-block mx-2">
                 <span class="brand-name">Techzy</span>
             </a>
 
@@ -16,6 +16,11 @@
                         <a class="nav-link active" routerLink="/">
                             <i class="fas fa-home success"></i> Home
                             <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" *ngIf="userType == 'A'">
+                        <a class="nav-link" routerLink="/users">
+                            <i class="fas fa-users success"></i> Users
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -33,17 +38,28 @@
                             <a class="dropdown-item" routerLink="products">All Products</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="!userId">
                         <a class="nav-link" href="#">
-                            <i class="fas fa-balance-scale-left success"></i>
-                            Compare
+                            <i class="fas fa-balance-scale-left success"></i> Compare
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="cartItems/{{userIdNum}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
-                    </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="!userId">
                         <a class="nav-link" routerLink="signin" ><i class="fas fa-sign-in-alt success"></i> Login</a>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf="userId">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-alt success"></i> {{userName}}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" routerLink="userProfile">
+                                <i class="fas fa-id-card success"></i> My Profile
+                            </a>
+                            <a class="dropdown-item" routerLink="cartItems/{{userId}}">
+                                <i class="fas fa-shopping-cart success"></i> My Cart
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" routerLink="signin" (click)="logoutUser()"><i class="fas fa-sign-out-alt success"></i> Logout</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -66,7 +82,7 @@
             <li class="nav-item"><a routerLink="/" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">Products</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Compare</a></li>
-            <li class="nav-item"><a routerLink="cartItems/{{userIdNum}}" class="nav-link px-2 text-muted">Cart</a></li>
+            <li class="nav-item" *ngIf="userId"><a routerLink="cartItems/{{userId}}" class="nav-link px-2 text-muted">Cart</a></li>
             <li class="nav-item"><a routerLink="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
     </footer>
