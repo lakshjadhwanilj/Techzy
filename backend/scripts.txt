@@ -14,23 +14,6 @@ primaryAddress varchar(60),
 shippingAddress varchar(60)
 )
 
-CREATE TABLE PRODUCT_TYPE(
-productTypeId varchar(1),
-productTypeName varchar(15)
-)
-
-
-CREATE TABLE BRAND (
-brandId number,
-brandName varchar(20),
-brandDesc varchar(30)
-)
-
-CREATE TABLE RETAILER(
-userId number,
-total_revenue number
-)
-
 CREATE TABLE PRODUCTS (
 productId number,
 productName varchar(15),
@@ -43,6 +26,40 @@ brandId number,
 inStock number,
 productType varchar(1)
 )
+
+CREATE TABLE WISH_LIST_ITEM (
+wishListItemId number,
+productName varchar(30),
+userId number
+)
+
+CREATE TABLE CART_ITEM(
+cartItemId number,
+quantity number,
+productPrice number(10,2),
+userId number,
+productName varchar(30)
+)
+
+---------------------------------
+
+CREATE TABLE PRODUCT_TYPE(
+productTypeId varchar(1),
+productTypeName varchar(15)
+)
+
+CREATE TABLE BRAND (
+brandId number,
+brandName varchar(20),
+brandDesc varchar(30)
+)
+
+CREATE TABLE RETAILER(
+userId number,
+total_revenue number
+)
+
+
 
 CREATE TABLE PHOTO(
 productId number,
@@ -87,19 +104,7 @@ userId number,
 productId number
 )
 
-CREATE TABLE WISH_LIST_ITEM (
-wishListItemId number,
-productId number,
-userId number
-)
 
-CREATE TABLE CART_ITEM(
-cartItemId number,
-quantity number,
-totalCost number(10,2),
-userId number,
-productId number
-)
 
 CREATE TABLE PAYMENTS(
 paymentId number,

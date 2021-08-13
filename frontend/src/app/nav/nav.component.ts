@@ -10,38 +10,29 @@ import { User } from '../user/User';
 })
 export class NavComponent implements OnInit {
 
-  loggedin:boolean=false;
-  user: any;
-  userId : any;
-  userEmail : any;
-  userName:any;
+  userId: any
+  userName: any
+  userType: any
 
-  constructor(private userService:UserService, private router:Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('userName') != null) {
+      this.userName = sessionStorage.getItem('userName')
+      this.userId = sessionStorage.getItem('userId')
+      this.userType = sessionStorage.getItem('userType')
+    }
+  }
+
+  logoutUser(): void{
     if (sessionStorage.getItem("userId")!=null){
-    this.userEmail = sessionStorage.getItem("userEmail")
-    this.userId = sessionStorage.getItem("userId")
-    this.loggedin=true
-    this.getUser(this.userId)
-    this.userName=this.user.userName
-    console.log(this.user)
-    console.log(this.userName)
-    }
-  
-  }
-  getUser(userId:number){
-    this.userService.getUserById(userId)
-    .subscribe((data: any) => {
-      this.user = data;
-    }
-    )
-  }
-   logoutUser():void{
-     if (sessionStorage.getItem("userId")!=null){
-      sessionStorage.removeItem("userId") 
+      sessionStorage.removeItem("userId")
+      sessionStorage.removeItem("userName")
       sessionStorage.removeItem("userEmail")
-      this.loggedin=false
+      sessionStorage.removeItem("userType")
+      this.userId = ''
+      this.userName = ''
+      this.userType = ''
       this.router.navigate(["/signin"])
      }
    }

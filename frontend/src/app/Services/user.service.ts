@@ -9,17 +9,17 @@ export class UserService {
 
   private baseUrl = "http://localhost:8075/tech/v1/";
 
-  constructor(private http:HttpClient) {
-   }
-
+  constructor(private http: HttpClient) { }
    
    getUserList(){
     console.log(this.http.get<any[]>(this.baseUrl+ 'users'))
     return this.http.get<any[]>(this.baseUrl+ 'users');
-   }
-   getUserById(id: number){
+  }
+  
+  getUserById(id: number){
     return this.http.get<any>(this.baseUrl+'user/'+id);
   }
+  
   updateUser(userId:number,user:Object)
    {
     console.log(this.http.put<User>(this.baseUrl+'updateUser/'+userId,user))

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/Product/Product';
 import { CartService } from 'src/app/Services/cart.service';
+import { ProductService } from 'src/app/Services/product.service';
 import { CartItem } from '../CartItem';
 
 @Component({
@@ -13,18 +15,12 @@ export class GetAllCartItemsComponent implements OnInit {
 
   subject: any
   userId: any
-
   cartList: CartItem[] = []
-  quantity: string
-  
   cartItemForm: FormGroup
   newCartItem: CartItem
-
-  quantityList: any
-
-  finalCost: number
   
-  constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private cartService: CartService) {
+  
+  constructor(fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router, private cartService: CartService, private productService: ProductService) {
     this.cartItemForm = fb.group({
       newQuantity: ''
     })
@@ -32,10 +28,7 @@ export class GetAllCartItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData()
-  
-    // for (let c of this.cartList) {
-    //   this.finalCost += c.totalCost
-    // }
+    this.getGrandTotal()
   }
   
   loadData() {
@@ -46,18 +39,17 @@ export class GetAllCartItemsComponent implements OnInit {
     this.cartService.getAllCartItemsByUserId(this.userId).subscribe(data => {
       this.cartList = data
     })
-
-    this.cartService.getCartItemsQuantity().subscribe(data => {
-      this.quantityList = data
-    })
-
-    this.cartService.getFinalCost().subscribe(data => {
-      this.finalCost = data
-    })
   }
 
   onDelete(cartItemId: number) {
-    this.cartService.deleteCartItem(cartItemId).subscribe(data => console.log(data))
+    this.cartService.deleteCartItem(cartItemId).subscribe(data => {
+      console.log(data)
+      // let currentUrl = this.router.url;
+      // this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      //     this.router.navigate([currentUrl]);
+      //     console.log(currentUrl);
+      // });
+    })
   }
 
   get newQuantity() {
@@ -69,12 +61,12 @@ export class GetAllCartItemsComponent implements OnInit {
     this.cartService.updateCartItemQuantity(cartItem.cartItemId, cartItem).subscribe(data => console.log(data))
   }
 
-  increment() {
-    this.cartService.getFinalCost()
-  }
-  
-  decrement() {
-    this.cartService.updateCartItemsQuantity(this.quantityList - 1)
+  getGrandTotal() {
+    let grandTotal: number = 0
+    for (let item of this.cartList) {
+      grandTotal += item.totalCost * item.quantity
+    }
+    return grandTotal
   }
 
 }
