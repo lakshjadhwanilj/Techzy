@@ -49,9 +49,9 @@ public class CartItemDaoImpl implements CartItemDao{
 		CartItem cartItem = em.find(CartItem.class, cartItemId);
 		System.out.println(cartItem);
 		cartItem.setQuantity(newCartItem.getQuantity());
-		cartItem.setProductId(newCartItem.getProductId());
+		cartItem.setProductName(newCartItem.getProductName());
 		cartItem.setUserId(newCartItem.getUserId());
-		cartItem.setTotalCost(newCartItem.getTotalCost());
+		cartItem.setProductPrice(newCartItem.getProductPrice());
 		em.merge(cartItem);
 		return "Cart Item Quantity Updated";
 	}

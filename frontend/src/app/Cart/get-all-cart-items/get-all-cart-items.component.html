@@ -8,7 +8,7 @@
             <table class="table" >
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>product Name</th>
                         <th>Quantity</th>
                         <th>Cost</th>
                         <th class="text-center">Actions</th>
@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let c of cartList">
-                        <th class="my-2 align-middle">{{c.productId}}</th>
+                        <th class="my-2 align-middle">{{c.productName}}</th>
                         <td>
                             <form [formGroup] = "cartItemForm">
                                 <div class="w-50 input-group my-2">
@@ -26,7 +26,7 @@
                                 </div>
                                 </form>
                             </td>
-                            <td class="my-2 align-middle">{{c.totalCost | currency:"INR"}}</td>
+                            <td class="my-2 align-middle">{{c.productPrice | currency:"INR"}}</td>
                             <td class="text-center">
                                 <button class="btn btn-outline-success m-2" (click)="updateQuantity(c)">
                                     <i class="fas fa-edit"></i>
