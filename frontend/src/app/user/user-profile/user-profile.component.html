@@ -26,11 +26,19 @@
           	<small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
                 </div>
                 <div *ngIf= "updateUserProfileForm.pristine; else btndisable">
-                    <button type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
+                    <button type="submit" class="btn-block btn btn-lg button-success">UPDATE PROFILE</button>
                 </div>
                 <ng-template #btndisable>
-                <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
+                <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE PROFILE</button>
             </ng-template>
+                <div *ngIf="!userObj.cd; else updateBtn">
+                    <button class="btn-block btn btn-lg button-success" type="submit" [routerLink]="['addContactDetails']">Add contact details</button>
+                    
+                </div>
+                <ng-template #updateBtn>
+                    <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['updateContactDetails']">UPDATE Contact</button>
+                </ng-template>
+            
 	</form>
 
 	</div>

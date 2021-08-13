@@ -7,7 +7,7 @@ export class User
   userEmail : string='';
   userPassword : string='';
   userType : string='C';
-  contactDetails : ContactDetails;
+  cd : ContactDetails;
   
   
 }

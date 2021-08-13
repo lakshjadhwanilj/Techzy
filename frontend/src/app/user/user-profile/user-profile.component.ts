@@ -69,7 +69,6 @@ export class UserProfileComponent implements OnInit {
       console.log('name: '+this.userName);
       console.log('email: '+this.userEmail);
       console.log('password: '+this.userPassword);
-      this.updateUserProfileForm.reset();
       this.userObj.userName=this.userName;
       this.userObj.userEmail=this.userEmail;
       this.userObj.userPassword=this.userPassword;
@@ -95,28 +94,11 @@ export class UserProfileComponent implements OnInit {
     )
   }
   ngOnInit(): void {
-    this.subject=this.activatedRoute.paramMap.subscribe(params=>{this.userId=params.get('userId')})
-    this.userService.getUserById(this.userId).subscribe(data=>{this.userObj=data})
-    
-    //  const userEmail=sessionStorage.getItem("userEmail");
-    // const userId=sessionStorage.getItem("userId");
-   
-    // if(userEmail!="" && userId!=""){
-    //   if(!userId) {							
-    //     alert("Invalid action.")							
-    //     this.router.navigate(['home']);							
-    //     // return;							
-    //   }	
-    //   this.userIdNum=Number(userId);
-    //   this.userEmailConst=userEmail;
-    //   this.userIdConst=this.userIdNum;
-    //   this.getUser(this.userIdNum);
-    //   console.log(userEmail);
-    //   console.log(userId);
-      
-   
-
-    
+    if(sessionStorage.getItem("userId")!=null){							
+      let userId = sessionStorage.getItem("userId");	
+      this.userIdNum = Number(userId);	
+      this.getUser(this.userIdNum);	
+    }
   }
 
 

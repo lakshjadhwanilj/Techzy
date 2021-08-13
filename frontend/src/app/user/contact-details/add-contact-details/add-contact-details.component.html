@@ -1,0 +1,37 @@
+<body class="text-center">
+    
+    <main class="form-contact">
+      <form [formGroup] = "contactForm" (ngSubmit) = "onSubmit()" #user="ngForm">
+        <h1 class="h3 mb-3 fw-normal">Your contact details</h1>
+    
+        <div class="form-floating">
+          <input type = "text" class="form-control" id="primaryNoFloatingInput" pattern = "^[1-9]{1}[0-9]{9}$" placeholder="Primary Phone No" [formControlName]="'var_primPhoneNo'">
+          <label for="primaryNoFloatingInput">Primary phone number</label> 
+           <!-- validation  -->
+          <small *ngIf = "var_primPhoneNo?.invalid && var_primPhoneNo?.touched" class = "text-danger">Phone No should be of 10 digits</small>
+        </div>
+
+        <div class="form-floating">
+          <input type = "text" class="form-control" id="secondaryNoFloatingInput" pattern = "^[1-9]{1}[0-9]{9}$" placeholder="Secondary Phone No" [formControlName]="'var_secondaryPhoneNo'">
+          <label for="secondaryNoFloatingInput">Secondary Phone No</label> 
+          <!-- validation  -->
+          <small *ngIf = "var_secondaryPhoneNo?.invalid && var_secondaryPhoneNo?.touched" class = "text-danger">Phone number shoud be of 10 digits</small>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" rows="5" cols="10" id="primAddressFloatingInput" placeholder="Primary Address" [formControlName]="'var_primAddress'" ></textarea>
+          <label for="primAddressFloatingInput">Primary Address</label>
+          <!-- validation  -->
+          <small *ngIf = "var_primAddress?.invalid && var_primAddress?.touched" class = "text-danger">Primary address is required</small>
+      </div> 
+      <div class="form-floating">
+        <textarea class="form-control" rows="5" cols="10" id="shippingAddressFloatingInput" placeholder="Shipping Address" [formControlName]="'var_shippingAddress'" ></textarea>
+        <label for="shippingAddressFloatingInput">Shipping Address</label>
+    </div> 
+    <div *ngIf>
+      <button></button>
+    </div>
+        <button [disabled] = contactForm.invalid class="w-100 btn btn-lg button-success" type="submit">Add contact</button>
+      </form>
+    </main>
+    <!-- <router-outlet></router-outlet> -->
+    

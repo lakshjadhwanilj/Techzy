@@ -25,7 +25,7 @@
                 <td> {{u.userName}} </td>
                 <td> {{u.userEmail}} </td> 
                 <td> {{u.userType}}</td>  
-                <td> <button class="btn btn-warning" [disabled]="u.userType=='R'" (click)="updateUserType(u)" style="margin-left: 20px;">Update</button>
+                <td> <button class="btn btn-warning" [disabled]="u.userType=='R'" (click)="updateUserType(u)" style="margin-left: 20px;">Update To retailer</button>
                 </td>
                 <td> <button class="btn btn-danger" (click)="deleteUser(u.userId)" style="margin-left: 20px;">Delete</button></td>
                 <!-- <td> {{u.contactDetails.getPrimaryPhoneNo()}} </td>  

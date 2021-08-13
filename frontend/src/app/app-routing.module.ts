@@ -12,6 +12,8 @@ import { GetAllUsersComponent } from './user/get-all-users/get-all-users.compone
 import { UserbyIdComponent } from './user/userby-id/userby-id.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart-items.component';
+import { AddContactDetailsComponent } from './user/contact-details/add-contact-details/add-contact-details.component';
+import { UpdateContactDetailsComponent } from './user/contact-details/update-contact-details/update-contact-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,11 +24,13 @@ const routes: Routes = [
   { path: 'products', component: GetAllProductsComponent },
   { path: 'users' , component: GetAllUsersComponent},
   { path: 'user', component: UserbyIdComponent },
-  { path: 'userProfile/:userId', component: UserProfileComponent },
+  { path: 'userProfile', component: UserProfileComponent },
   { path: 'products/:productId', component: GetProductByIdComponent },
   { path: 'newProduct', component: AddProductComponent },
   { path: 'updateProduct/:productId', component: UpdateProductComponent },
   { path: 'cartItems/:userId', component: GetAllCartItemsComponent },
+  {path: 'userProfile/addContactDetails',component: AddContactDetailsComponent},
+  {path:'userProfile/updateContactDetails',component: UpdateContactDetailsComponent},
   { path: '**', component: HomeComponent }
 
 ];
