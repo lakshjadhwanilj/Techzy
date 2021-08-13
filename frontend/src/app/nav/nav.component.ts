@@ -9,34 +9,34 @@ import { User } from '../user/User';
 })
 export class NavComponent implements OnInit {
 
-  loggedin:boolean=false;
-  userObj: User = new User();
-  userIdNum : any;
+  loggedin: boolean = false
+  
+  user: User = new User()
+  userEmail: any
+  userId : any
 
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    const userEmail = sessionStorage.getItem("userEmail")
-    this.userIdNum = sessionStorage.getItem("userId")
+    this.userEmail = sessionStorage.getItem("userEmail")
+    this.userId = sessionStorage.getItem("userId")
    
-  //   if(userEmail!="" && userId!=""){
-  //     this.userIdNum=userId;
+    if(this.userEmail!="" && this.userId!=""){
+      // this.userIdNum=userId;
 
-  //     this.getUser(this.userIdNum);
-  //     this.loggedin=true;
-  //     console.log(userEmail);
-  //     console.log(userId);
+      // this.getUser(this.userIdNum);
+      // this.loggedin=true;
+      // console.log(userEmail);
+      // console.log(userId);
       
-  //  }
-    // this.userId=sessionStorage.getItem("userId")
+   }
 
   }
-  getUser(userId:number){
-    this.userService.getUserById(userId)
-    .subscribe((data: any) => {
-      this.userObj = data;
-    }
-    )
+
+  getUser(userId: any) {
+    this.userService.getUserById(userId).subscribe(data => {
+      this.user = data;
+    })
   }
 }
 

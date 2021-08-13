@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" routerLink="/">
-                <img src="assets/logo/logo_green.png" alt="" width="50" height="50" class="d-inline-block mx-2">
+                <img src="assets/logo/logo_green.png" alt="Techzy" width="50" height="50" class="d-inline-block mx-2">
                 <span class="brand-name">Techzy</span>
             </a>
 
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="cartItems/{{userIdNum}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
+                        <a class="nav-link" routerLink="cartItems/{{userId}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="signin" ><i class="fas fa-sign-in-alt success"></i> Login</a>
@@ -66,7 +66,7 @@
             <li class="nav-item"><a routerLink="/" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">Products</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Compare</a></li>
-            <li class="nav-item"><a routerLink="cartItems/{{userIdNum}}" class="nav-link px-2 text-muted">Cart</a></li>
+            <li class="nav-item"><a routerLink="cartItems/{{userId}}" class="nav-link px-2 text-muted">Cart</a></li>
             <li class="nav-item"><a routerLink="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
     </footer>
