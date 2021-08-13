@@ -39,12 +39,30 @@
                             Compare
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="cartItems/{{userIdNum}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
+                    <li class="nav-item" *ngIf="loggedin">
+                        <a class="nav-link" routerLink="cartItems/{{userId}}"><i class="fas fa-shopping-cart success"></i> Cart</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="!loggedin">
                         <a class="nav-link" routerLink="signin" ><i class="fas fa-sign-in-alt success"></i> Login</a>
                     </li>
+                   
+
+                    <li class="nav-item dropdown" *ngIf="loggedin">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-th-large success"></i> {{userName}}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-mobile-alt success ps-1"></i> My Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-laptop success pe-1"></i> Wishlist
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" (click)="logoutUser()"><i class="fas fa-sign-in-alt success"></i> Logout</a>
+                        </div>
+                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -66,7 +84,7 @@
             <li class="nav-item"><a routerLink="/" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">Products</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Compare</a></li>
-            <li class="nav-item"><a routerLink="cartItems/{{userIdNum}}" class="nav-link px-2 text-muted">Cart</a></li>
+            <li class="nav-item" *ngIf="loggedin"><a routerLink="cartItems/{{userId}}" class="nav-link px-2 text-muted">Cart</a></li>
             <li class="nav-item"><a routerLink="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>
     </footer>
