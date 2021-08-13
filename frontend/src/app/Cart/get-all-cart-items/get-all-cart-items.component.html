@@ -8,7 +8,7 @@
             <table class="table" >
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>product Name</th>
                         <th>Quantity</th>
                         <th>Cost</th>
                         <th class="text-center">Actions</th>
@@ -16,11 +16,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let c of cartList">
-                        <th class="my-2 align-middle">{{c.productId}}</th>
+                        <th class="my-2 align-middle">{{c.productName}}</th>
                         <td class="my-2 align-middle"> 
                             <span class="d-inline">{{c.quantity}}
                             <form [formGroup] = "cartItemForm">    
-                                <!-- <input type="text" class="form-control" placeholder="" [formControlName]="'newQuantity'">  -->
                                 <select class="form-select form-select-sm w-75 d-inline" id="floatingSelectGrid" aria-label=""  placeholder="name@example.com" value= "" [formControlName]  ="'newQuantity'">
                                     <option value="" selected>Select New Quantity</option>
                                     <option value="1">1</option>
@@ -30,7 +29,7 @@
                             </form>
                         </span>
                         </td>
-                            <td class="my-2 align-middle">{{c.totalCost | currency:"INR"}}</td>
+                            <td class="my-2 align-middle">{{c.productPrice | currency:"INR"}}</td>
                             <td class="text-center">
                                 <button class="btn btn-outline-success m-2" (click)="updateQuantity(c)">
                                     <i class="fas fa-edit"></i>

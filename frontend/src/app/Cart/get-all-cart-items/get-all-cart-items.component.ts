@@ -64,7 +64,7 @@ export class GetAllCartItemsComponent implements OnInit {
   getGrandTotal() {
     let grandTotal: number = 0
     for (let item of this.cartList) {
-      grandTotal += item.totalCost * item.quantity
+      grandTotal += item.productPrice * item.quantity
     }
     return grandTotal
   }
