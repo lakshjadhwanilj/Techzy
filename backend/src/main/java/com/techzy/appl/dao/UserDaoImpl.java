@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.techzy.appl.beans.User;
 
-
 @Repository("userDao")
 @EnableTransactionManagement
 public class UserDaoImpl implements UserDao{

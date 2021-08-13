@@ -1,69 +1,77 @@
-<main class="py-3 form-update">
+<main class="mt-4 mx-5 px-5 form-update">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h3 class="text-muted font-weight-bold">User Profile</h3>
+                <h3 class="">User Profile</h3>
                 <form [formGroup] = "updateUserProfileForm" class="" (ngSubmit) = "onSubmit()">
-	<div class="form-group">
-        <label for="floatingInputName">Name</label> 
-                    <input type = "text" class="form-control" id="floatingInputName" [(ngModel)]="userObj.userName"  placeholder="Name" [formControlName]="'var_name'">
-          	    
-           	    <!-- validation  -->
-          	    <small *ngIf = "var_name?.invalid && var_name?.touched" class = "text-danger">Name is required</small>
+	                <div class="form-group">
+                        <label for="floatingInputName">Name</label> 
+                        <input type = "text" class="form-control" id="floatingInputName" [(ngModel)]="userObj.userName"  placeholder="Name" [formControlName]="'var_name'">
+           	            <!-- validation  -->
+                        <small *ngIf = "var_name?.invalid && var_name?.touched" class = "text-danger">Name is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="floatingInput">Email address</label>
+                        <input type = "email" class="form-control" id="floatingInput" disabled [(ngModel)]="userObj.userEmail" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
+                        <!-- validation  -->
+                        <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="floatingPassword">Password</label>
+                        <input type="password" class="form-control" id="floatingPassword" [(ngModel)]="userObj.userPassword" pattern = "^[A-Za-z]\w{7,14}$" placeholder="Password" [formControlName]="'var_password'">
+                
+                        <!-- validation  -->
+                        <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
+                    </div>
+                    <div *ngIf= "updateUserProfileForm.pristine; else btndisable">
+                        <button type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
+                    </div>
+                    <ng-template #btndisable>
+                        <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
+                    </ng-template>
+                    <div *ngIf="!userObj.cd; else updateBtn" >
+                        <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['addContactDetails']">Add contact</button>
+                    </div>
+                    <ng-template #updateBtn>
+                        <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['updateContactDetails']">Update contact</button>
+                    </ng-template>
+	            </form>
+            </div>
+            <!-- <div class="container px-4">
+                <div class="row mt-4">
+                    <h3>{{chMessage}}</h3>
+                    <h3>Your WishList </h3>
+                     <p class="lead">You have {{wishList.length}} items in your WishList.</p>
                 </div>
-                <div class="form-group">
-                    <label for="floatingInput">Email address</label>
-                   <input type = "email" class="form-control" id="floatingInput" [(ngModel)]="userObj.userEmail" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
-       	    
-           	<!-- validation  -->
-          	<small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
-                </div>
-                <div class="form-group">
-                    <label for="floatingPassword">Password</label>
-                    <input type="password" class="form-control" id="floatingPassword" [(ngModel)]="userObj.userPassword" pattern = "^[A-Za-z]\w{7,14}$" placeholder="Password" [formControlName]="'var_password'">
-        	  
-          	<!-- validation  -->
-          	<small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
-                </div>
-                <div *ngIf= "updateUserProfileForm.pristine; else btndisable">
-                    <button type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
-                </div>
-                <ng-template #btndisable>
-                <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
-            </ng-template>
-	</form>
-
-	</div>
-	<div class="col-md-8">
-                    <h3 class="text-muted font-weight-bold">Wishlist</h3>
-                    <div class="table-responsive">
-                        <table class="table table-sm table-hover">
+                <div class="row"> -->
+                    <div class="col-md-8">
+                        <table class="table" >
                             <thead>
                                 <tr>
-                                    <th>PRODUCT_ID</th>
-                                    <th>PRODUCT_NAME</th>
-                                    <th>PRODUCT_PRICE</th>
-                                    <th>BRAND_NAME</th>
-                                    <th>ACTION</th>
+                                    <th>#</th>
+                                    <th>Product</th>
+                                    <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>102</td>
-                                    <td>MACBOOK PRO</td>
-                                    <td>150000</td>
-                                    <td>APPLE</td>
+                                <tr *ngFor="let w of wishList">
+                                    <th class="my-2 align-middle">{{w.productName}}</th>
                                     <td>
-                                        <i class="fas fa-times" style="color: red;">
-                                        </i>
-		<!--<td>                    </td>
-                                        <a href="/order/6114175810c82600045f74a2" class="btn btn-info btn-sm">Details</a>
-                                    </td>-->
-                                </tr>
+                                        <form>
+                                            <div class="w-50 input-group my-2">
+                                            <label for="">{{productList}}</label>
+                                            </div>
+                                            </form>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-danger m-2" (click)="onDelete(w.wishListItemId)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
         </div>
-    </main>
+    </div>
+</main>

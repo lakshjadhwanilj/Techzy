@@ -1,0 +1,60 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  html,
+body {
+  height: 100%;
+}
+
+.form-contact {
+  margin-bottom: 5px;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  padding-bottom: 0;
+  margin: auto;
+}
+
+.form-contact .checkbox {
+  font-weight: 400;
+}
+
+.form-contact .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-contact input[type="text"] {
+  margin-bottom: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-contact input[type="text"] {
+    margin-bottom: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+.form-contact input[type="text-area"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+.form-control.ng-touched.ng-invalid{
+  border : 1px solid red;
+} 
+.form-control.ng-touched.ng-valid{
+  border : 1px solid green;
+}

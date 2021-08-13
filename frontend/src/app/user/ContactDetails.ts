@@ -1,6 +1,6 @@
 export class ContactDetails
 {
-  contactId : number=0;
+  // contactId : number=0;
   primaryPhoneNo : string='';
   secondaryPhoneNo : string='';
   primaryAddress : string='';
@@ -9,6 +9,8 @@ export class ContactDetails
   getPrimaryPhoneNo(){
     return this.primaryPhoneNo;
   }
+
+ 
 }
   
            

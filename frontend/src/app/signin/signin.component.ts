@@ -23,8 +23,7 @@ export class SigninComponent implements OnInit {
     this.signinform = fb.group({									
             var_email: ['', [Validators.required]],									
             var_password: ['',[ Validators.required]]	
-    });
-    
+    })
    }
 
    get var_email(){
@@ -53,9 +52,11 @@ export class SigninComponent implements OnInit {
     
       
       for(var user of this.userList){
-         if(user.userEmail==this.userEmail && user.userPassword==this.userPassword){
-          sessionStorage.setItem("userEmail",this.userEmail)
+        if (user.userEmail == this.userEmail && user.userPassword == this.userPassword) {
+          sessionStorage.setItem("userName", user.userName)
           sessionStorage.setItem("userId",(user.userId).toString())
+          sessionStorage.setItem("userEmail", this.userEmail)
+          sessionStorage.setItem("userType", user.userType)
           this.router.navigate(['home']);
           this.signinform.reset();
           this.invalidLogin=false;

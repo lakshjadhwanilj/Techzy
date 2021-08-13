@@ -32,7 +32,9 @@ public class ContactController {
 	@PostMapping("/addnewcontact/{userId}")
 	public void createContact(@PathVariable(value="userId") int userId, @RequestBody ContactDetails contact) {
 		User user = userService.findUserById(userId);
-		user.setCd(contact);
+		ContactDetails cd = new ContactDetails(contact.getPrimaryPhoneNo(),contact.getSecondaryPhoneNo(),contact.getPrimaryAddress(),contact.getShippingAddress());
+		user.setCd(cd);
+		System.out.println(cd);
 		userService.updateUser(userId, user);
 	}
 	

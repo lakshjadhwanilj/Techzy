@@ -6,15 +6,15 @@
         <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
     
         <div class="form-floating">
-          <input type = "text" class="form-control" id="floatingInput"  placeholder="Name" [formControlName]="'var_name'">
-          <label for="floatingInput">Name</label> 
+          <input type = "text" class="form-control" id="nameFloatingInput"  placeholder="Name" [formControlName]="'var_name'">
+          <label for="nameFloatingInput">Name</label> 
            <!-- validation  -->
           <small *ngIf = "var_name?.invalid && var_name?.touched" class = "text-danger">Name is required</small>
         </div>
 
         <div class="form-floating">
-          <input type = "email" class="form-control" id="floatingInput" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
-          <label for="floatingInput">Email address</label> 
+          <input type = "email" class="form-control" id="emailFloatingInput" pattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" placeholder="name@example.com" [formControlName]="'var_email'">
+          <label for="emailFloatingInput">Email address</label> 
            <!-- validation  -->
           <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
         </div>
@@ -26,8 +26,7 @@
       </div> 
         <button [disabled] = signupform.invalid class="w-100 btn btn-lg button-success" type="submit">Sign up</button>
         <div class = "signin">
-        <a class = "signin success" routerLink = "/signin" >Sign-in</a><br>
-        
+        <p>Already Have an Account? <a class = "signin success" routerLink = "/signin" >Signin</a></p>
         </div>
       </form>
     </main>

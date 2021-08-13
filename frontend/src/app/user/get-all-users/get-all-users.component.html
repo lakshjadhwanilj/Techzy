@@ -1,38 +1,33 @@
-<h3 class="p-3 text-center">List of Registered Users</h3>
-<div class="container">
-    <table class="table table-striped table-bordered">
+<div class="container px-4">
+    <h3 class="mt-4">List of Registered Users</h3>
+    <p class="lead">You have {{userList.length}} users on your app.</p>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>User Id</th>
                 <th>User Name</th>
                 <th>User Email</th>
-                <th>User Type</th>
-                <th>update</th>
-                <th>Delete</th>
-                <!-- <th>Primary Phone Number</th>
-                <th>Secondary Phone Number</th>
-                <th>Primary Address</th>
-                <th>Secondary Address</th> -->
-
-                 
-                  
+                <th class="text-center">User Type</th>
+                <th class="text-center">Update to Retailer</th>
+                <th class="text-center">Delete User</th>
             </tr>
-
         </thead>
         <tbody>
-              <tr *ngFor="let u of userList">              
-                <td> {{u.userId}} </td>
-                <td> {{u.userName}} </td>
-                <td> {{u.userEmail}} </td> 
-                <td> {{u.userType}}</td>  
-                <td> <button class="btn btn-warning" [disabled]="u.userType=='R'" (click)="updateUserType(u)" style="margin-left: 20px;">Update</button>
+              <tr *ngFor="let u of userList;">              
+                <td class="my-2 align-middle"> {{u.userId}} </td>
+                <td class="my-2 align-middle"> {{u.userName}} </td>
+                <td class="my-2 align-middle"> {{u.userEmail}} </td> 
+                <td class="my-2 align-middle text-center"> {{u.userType}}</td>  
+                <td class="my-2 align-middle text-center"> 
+                    <button class="btn btn-outline-success" [disabled]="u.userType=='R' || u.userType=='A'" (click)="updateUserType(u)">
+                        <i class="fas fa-edit"></i>
+                    </button>
                 </td>
-                <td> <button class="btn btn-danger" (click)="deleteUser(u.userId)" style="margin-left: 20px;">Delete</button></td>
-                <!-- <td> {{u.contactDetails.getPrimaryPhoneNo()}} </td>  
-                <td> {{u.contactDetails.secondaryPhoneNo}} </td>  
-                <td> {{u.contactDetails.primaryAddress}} </td>   -->
-                <!-- <td> {{u.contactDetails.shippingAddress}} </td>                          -->
-               
+                <td class="my-2 align-middle text-center"> 
+                    <button class="btn btn-outline-danger" (click)="deleteUser(u.userId)">
+                        <i class="fas fa-trash"></i>    
+                    </button>
+                </td>
             </tr>
             <tr *ngIf="!userList || userList.length==0">										
                 <th colspan="6">										
