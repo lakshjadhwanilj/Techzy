@@ -41,6 +41,32 @@ userId number,
 productName varchar(30)
 )
 
+CREATE TABLE MOBILES(
+productId number,
+ram varchar(10),
+rom varchar(10),
+camera varchar(10),
+resolution varchar(15),
+battery number,
+sim varchar(10),
+processor varchar(20),
+os varchar(10),
+color varchar(10)
+)
+
+CREATE TABLE LAPTOPS(
+productId number,
+ram varchar(10),
+rom varchar(10),
+camera varchar(10),
+resolution varchar(15),
+battery number,
+USB_slots number,
+processor varchar(20),
+os varchar(10),
+color varchar(10)
+)
+
 ---------------------------------
 
 CREATE TABLE PRODUCT_TYPE(
@@ -68,32 +94,6 @@ photoNo1 blob,
 photoNo2 blob,
 photoNo3 blob,
 photoNo4 blob)
-
-CREATE TABLE MOBILES(
-productId number,
-ram varchar(10),
-rom varchar(10),
-camera varchar(10),
-resolution varchar(15),
-battery number,
-sim varchar(10),
-processor varchar(20),
-os varchar(10),
-color varchar(10)
-)
-
-CREATE TABLE LAPTOPS(
-productId number,
-ram varchar(10),
-rom varchar(10),
-camera varchar(10),
-resolution varchar(15),
-battery number,
-USB_slots number,
-processor varchar(20),
-os varchar(10),
-color varchar(10)
-)
 
 CREATE TABLE REVIEW_DETAILS(
 

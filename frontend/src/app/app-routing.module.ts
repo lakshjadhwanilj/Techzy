@@ -14,6 +14,12 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart-items.component';
 import { AddContactDetailsComponent } from './user/contact-details/add-contact-details/add-contact-details.component';
 import { UpdateContactDetailsComponent } from './user/contact-details/update-contact-details/update-contact-details.component';
+import { AddMobileComponent } from './Mobiles/add-mobile/add-mobile.component';
+import { UpdateMobileComponent } from './Mobiles/update-mobile/update-mobile.component';
+import { GetAllMobilesComponent } from './Mobiles/get-all-mobiles/get-all-mobiles.component';
+import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
+import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
+import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,9 +36,14 @@ const routes: Routes = [
   { path: 'updateProduct/:productId', component: UpdateProductComponent },
   { path: 'cartItems/:userId', component: GetAllCartItemsComponent },
   {path: 'userProfile/addContactDetails',component: AddContactDetailsComponent},
-  {path:'userProfile/updateContactDetails',component: UpdateContactDetailsComponent},
+  { path: 'userProfile/updateContactDetails', component: UpdateContactDetailsComponent },
+  { path: 'newMobile/:productId', component: AddMobileComponent },
+  { path: 'updateMobile/:productId', component: UpdateMobileComponent },
+  { path: 'newLaptop/:productId', component: AddLaptopComponent },
+  { path: 'updateLaptop/:productId', component: UpdateLaptopComponent },
+  { path: 'mobiles', component: GetAllMobilesComponent },
+  { path: 'laptops', component: GetAllLaptopsComponent },
   { path: '**', component: HomeComponent }
-
 ];
 
 @NgModule({

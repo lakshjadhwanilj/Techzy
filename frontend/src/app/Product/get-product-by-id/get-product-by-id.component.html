@@ -62,6 +62,13 @@
             </ul>
             <p><span class="me-1"><strong>{{product.productPrice | currency: "INR"}}</strong></span></p>
             <p class="pt-1">{{product.productDescription}}</p>
+            <div [hidden]>{{getAllFeatures()}}</div>
+            <div class="row">
+                <div class="col">
+                    <div class="row"></div>
+                </div>
+                <div class="col"></div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-sm table-borderless mb-0">
                     <tbody>
@@ -71,11 +78,45 @@
                         </tr>
                         <tr>
                             <th class="ps-0 w-25" scope="row"><strong>Color</strong></th>
-                            <td>Grey</td>
+                            <td>{{getColor()}}</td>
                         </tr>
                         <tr>
-                            <th class="ps-0 w-25" scope="row"><strong>Delivery</strong></th>
-                            <td>USA, Europe</td>
+                            <th class="ps-0 w-25" scope="row"><strong>OS</strong></th>
+                            <td>{{getOS()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Processor</strong></th>
+                            <td>{{getProcessor()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Battery</strong></th>
+                            <td>{{getBattery()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Ram</strong></th>
+                            <td>{{getRam()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Rom</strong></th>
+                            <td>{{getRom()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Camera</strong></th>
+                            <td>{{getCamera()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>Resolution</strong></th>
+                            <td>{{getResolution()}}</td>
+                        </tr>
+                        <tr>
+                            <th class="ps-0 w-25" scope="row"><strong>{{product.productType === "M" ? 'Sim' : 'USB Slots'}}</strong></th>
+                            <td>{{getFeature()}}</td>
                         </tr>
                     </tbody>
                 </table>

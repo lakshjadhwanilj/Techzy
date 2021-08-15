@@ -10,24 +10,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="Contact_Details")
+@Table(name = "Contact_Details")
 public class ContactDetails {
-	
+
 	@Id
-	@Column(name="ContactId")
+	@Column(name = "ContactId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ContactId;
-	
-	@Column(name="PrimaryPhoneNo")
+
+	@Column(name = "PrimaryPhoneNo")
 	private String primaryPhoneNo;
-	
-	@Column(name="SecondaryPhoneNo")
+
+	@Column(name = "SecondaryPhoneNo")
 	private String secondaryPhoneNo;
-	
-	@Column(name="PrimaryAddress")
+
+	@Column(name = "PrimaryAddress")
 	private String primaryAddress;
-	
-	@Column(name="ShippingAddress")
+
+	@Column(name = "ShippingAddress")
 	private String shippingAddress;
 
 	public ContactDetails() {
@@ -90,11 +90,5 @@ public class ContactDetails {
 				+ secondaryPhoneNo + ", primaryAddress=" + primaryAddress + ", shippingAddress=" + shippingAddress
 				+ "]";
 	}
-
-	
-	
-	
-	
-	
 
 }
