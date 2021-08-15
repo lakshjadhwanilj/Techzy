@@ -13,7 +13,7 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAllProducts() {
-    return  this.http.get<any[]>(`${this.baseUrl}`+'/products')
+    return this.http.get<any[]>(`${this.baseUrl}` + '/products')
   }
 
   getProductById(productId: any) {
@@ -31,6 +31,16 @@ export class ProductService {
    updateNewProduct(productId:number,product:Object)
    {
     return this.http.put<Product>(this.baseUrl+'/products/'+productId,product)
-   }
+  }
+  
+  // Get All Mobiles
+  getAllMobiles() {
+    return this.http.get<any[]>(this.baseUrl + '/products/mobiles');
+  }
+  
+  // Get All Laptops
+  getAllLaptops() {
+    return this.http.get<any[]>(this.baseUrl + '/products/laptops');
+  }
 
 }

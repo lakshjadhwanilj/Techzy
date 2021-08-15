@@ -3,11 +3,15 @@ package com.techzy.appl.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,7 +22,8 @@ public class Product {
 
 	@Id
 	@Column(name = "productId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="product_Id")
+	@SequenceGenerator(name ="product_Id", sequenceName = "product_Id", allocationSize =1)
 	private int productId;
 
 	@Column(name = "productName")

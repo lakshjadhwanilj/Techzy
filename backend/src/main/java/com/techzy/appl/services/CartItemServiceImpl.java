@@ -35,4 +35,9 @@ public class CartItemServiceImpl implements CartItemService {
 		return cartItemDao.updateCartItemQuantity(cartItemId, newCartItem);
 	}
 
+	@Override
+	public String deleteAllCartItemsByUserId(int userId) {
+		return cartItemDao.deleteAllCartItemsByUserId(userId);
+	}
+
 }

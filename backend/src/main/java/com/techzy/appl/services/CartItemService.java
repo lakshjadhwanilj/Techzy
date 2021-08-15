@@ -10,6 +10,7 @@ public interface CartItemService {
 	public List<CartItem> getAllCartItemsByUserId(int userId);
 	public String deleteCartItem(int cartItemId);
 	public String updateCartItemQuantity(int cartItemId, CartItem newCartItem);
+	public String deleteAllCartItemsByUserId(int userId);
 	
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LaptopService } from 'src/app/Services/laptop.service';
+import { MobileService } from 'src/app/Services/mobile.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from '../Product';
 
@@ -17,15 +19,8 @@ export class UpdateProductComponent implements OnInit {
   product: any;
   
   updateProductForm:FormGroup;
-  var_productType:string;
-  var_productName:string;
-  var_productDescription:string;
-  var_productPrice:string;
-  var_productTotalQuantity:string;
-  var_productInStock:string;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router,private productService: ProductService, fb:FormBuilder) { 
-
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private mobileService: MobileService, private laptopService: LaptopService, fb: FormBuilder) {
     this.updateProductForm=fb.group({
       productType:'',
       productName:'',
@@ -80,16 +75,22 @@ export class UpdateProductComponent implements OnInit {
     this.productService.updateNewProduct(this.productId,this.product).subscribe(data=> console.log(data))
     console.log("Product Updated" + this.product);
   
+  }
+  
+  onSubmit() {
+    this.submitted = true
+    this.save()
+  }
+  
+  delete() {
+    if (this.product.productType === 'M') {
+      this.mobileService.deleteMobile(this.productId).subscribe(data => console.log(data))
+    } else if (this.product.productType === 'L') {
+      this.laptopService.deleteLaptop(this.productId).subscribe(data => console.log(data))
     }
-    onSubmit() {
-     this.submitted = true;
-      this.save();
-   }
-   delete(){
-    //  console.log("Product Deleted")
-    //  console.log(this.productId)
     this.productService.deleteProduct(this.productId).subscribe(data => console.log(data))
     this.updateProductForm.reset()
-    this.router.navigate(['home']);
-   }
+    this.router.navigate(['home'])
+  }
+  
 }

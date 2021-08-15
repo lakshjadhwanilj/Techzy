@@ -20,6 +20,13 @@ import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart
 import { AddContactDetailsComponent } from './user/contact-details/add-contact-details/add-contact-details.component';
 import { UpdateContactDetailsComponent } from './user/contact-details/update-contact-details/update-contact-details.component';
 import { GetAllWishListItemsComponent } from './WishList/get-all-wish-list-items/get-all-wish-list-items.component';
+import { AddMobileComponent } from './Mobiles/add-mobile/add-mobile.component';
+import { GetAllMobilesComponent } from './Mobiles/get-all-mobiles/get-all-mobiles.component';
+import { UpdateMobileComponent } from './Mobiles/update-mobile/update-mobile.component';
+import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
+import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
+import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,14 @@ import { GetAllWishListItemsComponent } from './WishList/get-all-wish-list-items
     GetAllCartItemsComponent,
     AddContactDetailsComponent,
     UpdateContactDetailsComponent,
-    GetAllWishListItemsComponent
+    GetAllWishListItemsComponent,
+    AddMobileComponent,
+    GetAllMobilesComponent,
+    UpdateMobileComponent,
+    AddLaptopComponent,
+    GetAllLaptopsComponent,
+    UpdateLaptopComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

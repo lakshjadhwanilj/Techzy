@@ -2,8 +2,10 @@ package com.techzy.appl.dao;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -54,6 +56,15 @@ public class CartItemDaoImpl implements CartItemDao{
 		cartItem.setProductPrice(newCartItem.getProductPrice());
 		em.merge(cartItem);
 		return "Cart Item Quantity Updated";
+	}
+
+	@Override
+	@Transactional
+	public String deleteAllCartItemsByUserId(int userId) {
+		Query q = em.createNamedQuery("delete cart from id");
+		q.setParameter("userId",userId );
+		q.executeUpdate();
+		return "Cart Is empty";
 	}
 
 }

@@ -5,17 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
 @Table(name = "CART_ITEM")
+@NamedQuery(query = "delete from CartItem c where c.userId = :userId", name ="delete cart from id")
 public class CartItem {
 
 	@Id
 	@Column(name = "cartItemId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="cart_Item_Id")
+	@SequenceGenerator(name ="cart_Item_Id", sequenceName = "cart_Item_Id", allocationSize =1)
 	private int cartItemId;
 
 	@Column(name = "quantity")

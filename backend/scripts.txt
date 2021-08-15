@@ -76,7 +76,7 @@ rom varchar(10),
 camera varchar(10),
 resolution varchar(15),
 battery number,
-sim varchar(10),
+sim varchar(30),
 processor varchar(20),
 os varchar(10),
 color varchar(10)
@@ -108,10 +108,9 @@ productId number
 
 CREATE TABLE PAYMENTS(
 paymentId number,
-cartId number,
 paymentAmount number(10,2),
 paymentType varchar(4),
-paymentStatus varchar(10),
+paymentStatus varchar(30),
 userId number,
 paymentDate DATE,
 paymentTime TIMESTAMP

@@ -45,5 +45,10 @@ public class CartItemController {
 		return cartItemService.updateCartItemQuantity(cartItemId, newCartItem);
 	}
 
+	@DeleteMapping(path ="/cart/{userId}")
+	public String deleteAllCartItemsByUserId(@PathVariable(value = "userId") int userId) {
+		return cartItemService.deleteAllCartItemsByUserId(userId);
+		
+	}
 
 }
