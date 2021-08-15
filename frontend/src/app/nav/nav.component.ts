@@ -17,6 +17,15 @@ export class NavComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
+    this.loggedIn()
+
+  }
+
+  getUserName(){
+    return this.userName
+  }
+
+  loggedIn(){
     if (sessionStorage.getItem('userName') != null) {
       this.userName = sessionStorage.getItem('userName')
       this.userId = sessionStorage.getItem('userId')

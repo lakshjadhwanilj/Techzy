@@ -79,9 +79,10 @@ export class UserProfileComponent implements OnInit {
       this.userObj.userName=this.userName;
       this.userObj.userEmail=this.userEmail;
       this.userObj.userPassword=this.userPassword;
-      this.updateUser(this.userId);
+      this.updateUser(this.userIdNum);
       // this.user = new User();
-      //sessionStorage.setItem(this.userEmail)
+      sessionStorage.setItem("userName",this.userObj.userName);
+      //this.ngOnInit();
       // console.log("User added" + this.user);
      }
    }
