@@ -54,7 +54,6 @@ public class ProductDaoImpl implements ProductDao {
 	@Transactional
 	public String updateProduct(int productId, Product newProduct) {
 		Product product = em.find(Product.class, productId);
-		product.setBrandId(newProduct.getBrandId());
 		product.setInStock(newProduct.getInStock());
 		product.setProductDescription(newProduct.getProductDescription());
 		product.setProductName(newProduct.getProductName());
