@@ -3,8 +3,12 @@ userId number,
 userType varchar(1),
 userName varchar(25),
 userEmail varchar(60),
-userPassword varchar(15)
+userPassword varchar(100)
 )
+
+alter table users add contactid number
+
+create sequence user_Id increment by 1 start with 1000
 
 CREATE TABLE CONTACT_DETAILS(
 contactId number,
@@ -14,6 +18,8 @@ primaryAddress varchar(60),
 shippingAddress varchar(60)
 )
 
+CREATE SEQUENCE contact_Id increment by 1 start with 2000
+
 CREATE TABLE PRODUCTS (
 productId number,
 productName varchar(15),
@@ -22,16 +28,19 @@ price number not null,
 photoId number,
 totalQuantity number,
 userId number,
-brandId number,
 inStock number,
 productType varchar(1)
 )
+
+create sequence product_Id increment by 1 start with 5000
 
 CREATE TABLE WISH_LIST_ITEM (
 wishListItemId number,
 productName varchar(30),
 userId number
 )
+
+create sequence wish_List_Item_Id increment by 1 start with 30000
 
 CREATE TABLE CART_ITEM(
 cartItemId number,
@@ -41,12 +50,54 @@ userId number,
 productName varchar(30)
 )
 
----------------------------------
+create sequence cart_Item_Id increment by 1 start with 40000
+
+CREATE TABLE MOBILES(
+productId number,
+ram varchar(10),
+rom varchar(10),
+camera varchar(10),
+resolution varchar(15),
+battery number,
+sim varchar(30),
+processor varchar(20),
+os varchar(20),
+color varchar(30)
+)
+
+CREATE TABLE LAPTOPS(
+productId number,
+ram varchar(10),
+rom varchar(10),
+camera varchar(10),
+resolution varchar(15),
+battery number,
+USB_slots number,
+processor varchar(20),
+os varchar(20),
+color varchar(30)
+)
+
+CREATE TABLE PAYMENTS(
+paymentId number,
+paymentAmount number(10,2),
+paymentType varchar(10),
+paymentStatus varchar(30),
+userId number,
+paymentDate DATE,
+paymentTime TIMESTAMP
+)
+
+create sequence payment_Id increment by 1 start with 7000
+
+
 
 CREATE TABLE PRODUCT_TYPE(
 productTypeId varchar(1),
 productTypeName varchar(15)
 )
+
+---------------------------------
 
 CREATE TABLE BRAND (
 brandId number,
@@ -69,31 +120,6 @@ photoNo2 blob,
 photoNo3 blob,
 photoNo4 blob)
 
-CREATE TABLE MOBILES(
-productId number,
-ram varchar(10),
-rom varchar(10),
-camera varchar(10),
-resolution varchar(15),
-battery number,
-sim varchar(10),
-processor varchar(20),
-os varchar(10),
-color varchar(10)
-)
-
-CREATE TABLE LAPTOPS(
-productId number,
-ram varchar(10),
-rom varchar(10),
-camera varchar(10),
-resolution varchar(15),
-battery number,
-USB_slots number,
-processor varchar(20),
-os varchar(10),
-color varchar(10)
-)
 
 CREATE TABLE REVIEW_DETAILS(
 
@@ -102,19 +128,6 @@ reviewDetail varchar(20),
 rating number,
 userId number,
 productId number
-)
-
-
-
-CREATE TABLE PAYMENTS(
-paymentId number,
-cartId number,
-paymentAmount number(10,2),
-paymentType varchar(4),
-paymentStatus varchar(10),
-userId number,
-paymentDate DATE,
-paymentTime TIMESTAMP
 )
 
 CREATE TABLE PHOTO_DETAILS(

@@ -28,6 +28,8 @@ export class CartService {
     return this.http.post(this.baseUrl+"/cartItems",cartItem)
   }
 
-  
+  deleteAllCartItemsByUserId(userId: any){
+    return this.http.delete(this.baseUrl+"/cart/" +userId)
+  }
 
 }

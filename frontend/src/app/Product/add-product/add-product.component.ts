@@ -15,12 +15,6 @@ export class AddProductComponent implements OnInit {
   userIdNum:any;
   submitted:boolean= false;
   addProductForm:FormGroup;
-  var_productType:string;
-  var_productName:string;
-  var_productDesc:string;
-  var_productPrice:string;
-  var_productTotalQuantity:string;
-  var_productInStock:string;
 
   constructor(private productService: ProductService, fb:FormBuilder, private router: Router) { 
 
@@ -39,6 +33,7 @@ export class AddProductComponent implements OnInit {
     let userId = sessionStorage.getItem("userId");	
     this.userIdNum = Number(userId);	
   }
+
   get productType() {
     return this.addProductForm.get('productType');
   }
@@ -81,6 +76,7 @@ export class AddProductComponent implements OnInit {
     this.product = new Product();
     console.log("Product added" + this.product);
     this.addProductForm.reset()
+    // this.router.navigate(['newMobile/'+this.prod])
   }
 
   onSubmit() {

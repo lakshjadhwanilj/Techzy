@@ -1,5 +1,9 @@
-<div class="container d-flex justify-content-center mt-4">
-    <div class="row">
+<div class="container d-flex justify-content-center">
+    <div *ngIf="productList.length === 0" class="text-center mt-2">
+        <img src="/assets/images/No-Product-Found.png" alt="">
+        <h3 class="mb-0">Oops! No product found in this category!</h3>
+    </div>
+    <div *ngIf="productList.length>0" class="row mt-4">
         <h3>All Products</h3>
         <!-- <div *ngFor = "let product of productList"> -->
             <div class="col-sm-6 col-md-4 col-lg-3" *ngFor = "let product of productList">

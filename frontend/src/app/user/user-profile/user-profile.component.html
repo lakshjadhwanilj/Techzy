@@ -18,17 +18,12 @@
                     </div>
                     <div class="form-group">
                         <label for="floatingPassword">Password</label>
-                        <input type="password" class="form-control" id="floatingPassword" [(ngModel)]="userObj.userPassword" pattern = "^[A-Za-z]\w{7,14}$" placeholder="Password" [formControlName]="'var_password'">
+                        <input type="password" class="form-control" id="floatingPassword" pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="Password" [formControlName]="'var_password'">
                 
                         <!-- validation  -->
-                        <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
+                        <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be of minimum length 8 and should contain atleast 1 Uppercase Letter, 1 lowercase letter, 1 digit and 1 Special Character(#?!@$%^&*-)</small>
                     </div>
-                    <div *ngIf= "updateUserProfileForm.pristine; else btndisable">
-                        <button type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
-                    </div>
-                    <ng-template #btndisable>
                         <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
-                    </ng-template>
                     <div *ngIf="!userObj.cd; else updateBtn" >
                         <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['addContactDetails']">Add contact</button>
                     </div>

@@ -28,10 +28,10 @@
                             <i class="fas fa-th-large success"></i> All Categories
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" routerLink="mobiles">
                                 <i class="fas fa-mobile-alt success ps-1"></i> Mobiles
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" routerLink="laptops">
                                 <i class="fas fa-laptop success pe-1"></i>Laptops
                             </a>
                             <div class="dropdown-divider"></div>
@@ -48,7 +48,7 @@
                     </li>
                     <li class="nav-item dropdown" *ngIf="userId">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-alt success"></i> {{userName}}
+                            <i class="fas fa-user-alt success"></i> {{getUserName()}}
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" routerLink="userProfile">

@@ -23,6 +23,13 @@ import { GetAllWishListItemsComponent } from './WishList/get-all-wish-list-items
 import { RetailerComponent } from './retailer/retailer.component';
 import { RetailerProductsComponent } from './retailer/retailer-products/retailer-products.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddMobileComponent } from './Mobiles/add-mobile/add-mobile.component';
+import { GetAllMobilesComponent } from './Mobiles/get-all-mobiles/get-all-mobiles.component';
+import { UpdateMobileComponent } from './Mobiles/update-mobile/update-mobile.component';
+import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
+import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
+import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     GetAllWishListItemsComponent,
     RetailerComponent,
     RetailerProductsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AddMobileComponent,
+    GetAllMobilesComponent,
+    UpdateMobileComponent,
+    AddLaptopComponent,
+    GetAllLaptopsComponent,
+    UpdateLaptopComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { WishListService } from 'src/app/Services/wish-list.service';
 import { WishListItems } from 'src/app/WishList/get-all-wish-list-items/WishListItems';
 import { User } from '../User';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class UserProfileComponent implements OnInit {
   userId: any;
   userObj: User = new User();
   userIdNum : number;
+  encryptedPassword:string;
 
   updateUserProfileForm:FormGroup;
   error:string = '';
@@ -61,9 +63,10 @@ export class UserProfileComponent implements OnInit {
 
 
 
-   save() {
-   
-   }
+  encrypt(password:String){
+    return CryptoJS.AES.encrypt(password.trim(),'Techzy123').toString();
+  }
+  
 
    onSubmit(){
      this.submitted = true;
@@ -74,12 +77,12 @@ export class UserProfileComponent implements OnInit {
       this.userPassword = this.updateUserProfileForm.controls.var_password.value;
       this.userObj.userName=this.userName;
       this.userObj.userEmail=this.userEmail;
-      this.userObj.userPassword=this.userPassword;
+      this.encryptedPassword = this.encrypt(this.userPassword);
+      this.userObj.userPassword= this.encryptedPassword;
       this.updateUser(this.userIdNum);
-      sessionStorage.setItem("userName", this.userObj.userName)
-      sessionStorage.setItem("userPassword", this.userObj.userPassword)
       // this.user = new User();
-      //sessionStorage.setItem(this.userEmail)
+      sessionStorage.setItem("userName",this.userObj.userName);
+      //this.ngOnInit();
       // console.log("User added" + this.user);
      }
    }

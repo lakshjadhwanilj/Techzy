@@ -16,38 +16,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techzy.appl.beans.Product;
 import com.techzy.appl.services.ProductServiceImpl;
 
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/tech/v1")
 public class ProductController {
-	
+
 	@Autowired
 	private ProductServiceImpl productService;
 
-	
 	@PostMapping("/products")
 	public String createProduct(@RequestBody Product p) {
 		return productService.createProduct(p);
 	}
-	
+
 	@GetMapping(path = "/products")
-	//@ResponseBody
+	// @ResponseBody
 	public List<Product> getProductList() {
 		return productService.getProductList();
 	}
-	
+
 	@GetMapping(path = "/products/{id}")
-	public Product findProductById(@PathVariable(value="id")int productId) {
+	public Product findProductById(@PathVariable(value = "id") int productId) {
 		return productService.findProductById(productId);
 	}
-	
+
 	@PutMapping(path = "/products/{id}")
-	public String updateProduct(@PathVariable(value = "id") int productId , @RequestBody Product newProduct) {
+	public String updateProduct(@PathVariable(value = "id") int productId, @RequestBody Product newProduct) {
 		return productService.updateProduct(productId, newProduct);
 	}
 
-	@DeleteMapping(path ="/products/{id}")
-	public String deleteProduct(@PathVariable (value = "id") int productId) {
+	@DeleteMapping(path = "/products/{id}")
+	public String deleteProduct(@PathVariable(value = "id") int productId) {
 		return productService.deleteProduct(productId);
 	}
 	
@@ -57,4 +56,15 @@ public class ProductController {
 	}
 	
 	
+
+	@GetMapping(path = "/products/mobiles")
+	public List<Product> getAllMobiles() {
+		return productService.getAllMobiles();
+	}
+
+	@GetMapping(path = "/products/laptops")
+	public List<Product> getAllLaptops() {
+		return productService.getAllLaptops();
+	}
+
 }

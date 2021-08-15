@@ -22,6 +22,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "bootstrap": "^5.1.0",
     "crypto-js": "^4.1.1",
+    "creditcardpayments": "^1.0.3",
     "jquery": "^3.6.0",
     "ngx-show-hide-password": "^2.3.0",
     "rxjs": "~6.6.0",

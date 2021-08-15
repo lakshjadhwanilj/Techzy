@@ -62,23 +62,53 @@
             </ul>
             <p><span class="me-1"><strong>{{product.productPrice | currency: "INR"}}</strong></span></p>
             <p class="pt-1">{{product.productDescription}}</p>
-            <div class="table-responsive">
-                <table class="table table-sm table-borderless mb-0">
-                    <tbody>
-                        <tr>
-                            <th class="ps-0 w-25" scope="row"><strong>Model</strong></th>
-                            <td>{{product.productName}}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0 w-25" scope="row"><strong>Color</strong></th>
-                            <td>Grey</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0 w-25" scope="row"><strong>Delivery</strong></th>
-                            <td>USA, Europe</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div [hidden]>{{getAllFeatures()}}</div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col"><th class="ps-0 w-25" scope="row"><strong>Model</strong></th></div>
+                        <div class="col"><td>{{product.productName}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><th class="ps-0 w-25" scope="row"><strong>Color</strong></th></div>
+                        <div class="col"> <td>{{color}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">  <th class="ps-0 w-25" scope="row"><strong>OS</strong></th></div>
+                        <div class="col"><td>{{os}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <th class="ps-0 w-25" scope="row"><strong>Processor</strong></th></div>
+                        <div class="col">  <td>{{processor}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <th class="ps-0 w-25" scope="row"><strong>Battery</strong></th></div>
+                        <div class="col"> <td>{{battery}}</td></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col"><th class="ps-0 w-25" scope="row"><strong>Ram</strong></th></div>
+                        <div class="col"><td>{{ram}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><th class="ps-0 w-25" scope="row"><strong>Rom</strong></th></div>
+                        <div class="col"> <td>{{rom}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <th class="ps-0 w-25" scope="row"><strong>Camera</strong></th></div>
+                        <div class="col">  <td>{{camera}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <th class="ps-0 w-25" scope="row"><strong>Resolution</strong></th></div>
+                        <div class="col"><td>{{resolution}}</td></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"> <th class="ps-0 w-25" scope="row"><strong>{{product.productType === "M" ? 'Sim' : 'USB Slots'}}</strong></th></div>
+                        <div class="col" *ngIf = "product.productType === 'M'">  <td>{{sim}}</td></div>
+                        <div class="col" *ngIf = "product.productType === 'L'">  <td>{{usbSlots}}</td></div>
+                    </div>
+                </div>
             </div>
             <hr>
             <!-- <button type="button"  class="btn button-success text-uppercase px-4 me-1 mb-2">

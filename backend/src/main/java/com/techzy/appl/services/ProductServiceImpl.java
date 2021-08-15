@@ -44,4 +44,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.getProductListByRetailer(userId);
 	}
 
+	@Override
+	public List<Product> getAllMobiles() {
+		return productDao.getAllMobiles();
+	}
+
+	@Override
+	public List<Product> getAllLaptops() {
+		return productDao.getAllLaptops();
+	}
+
 }

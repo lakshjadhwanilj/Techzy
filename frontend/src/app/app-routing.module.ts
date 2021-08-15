@@ -17,6 +17,13 @@ import { UpdateContactDetailsComponent } from './user/contact-details/update-con
 import { RetailerComponent } from './retailer/retailer.component';
 import { RetailerProductsComponent } from './retailer/retailer-products/retailer-products.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AddMobileComponent } from './Mobiles/add-mobile/add-mobile.component';
+import { UpdateMobileComponent } from './Mobiles/update-mobile/update-mobile.component';
+import { GetAllMobilesComponent } from './Mobiles/get-all-mobiles/get-all-mobiles.component';
+import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
+import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
+import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,8 +44,14 @@ const routes: Routes = [
   {path:'dashboard', component:RetailerComponent},
   {path:'dashboard/products', component:RetailerProductsComponent},
   {path:'forgotPassword', component:ForgotPasswordComponent},
+  { path: 'newMobile/:productId', component: AddMobileComponent },
+  { path: 'updateMobile/:productId', component: UpdateMobileComponent },
+  { path: 'newLaptop/:productId', component: AddLaptopComponent },
+  { path: 'updateLaptop/:productId', component: UpdateLaptopComponent },
+  { path: 'mobiles', component: GetAllMobilesComponent },
+  { path: 'laptops', component: GetAllLaptopsComponent },
+  { path: 'payment', component: CheckoutComponent },
   { path: '**', component: HomeComponent }
-
 ];
 
 @NgModule({
