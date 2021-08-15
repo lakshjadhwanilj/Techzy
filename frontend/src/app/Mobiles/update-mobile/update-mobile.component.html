@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="my-4">
+        <h3 class="h3">Add details about {{product.productName}}</h3>
+    </div>
+    <div class="mt-3">
+        <form [formGroup] = "updateMobileForm">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="form-floating">
+                      <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="" [formControlName]  ="'ram'" [(ngModel)]="mobile.ram">
+                      <label for="floatingInputGrid">Ram</label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingTextarea"  placeholder="name@example.com" value= "" [formControlName]  ="'rom'" [(ngModel)]="mobile.rom">
+                    <label for="floatingTextarea">Rom</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid" [formControlName]="'camera'" placeholder="name@example.com" value="" [(ngModel)]="mobile.camera">
+                    <label for="floatingInputGrid">Camera</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value=""  [formControlName]  ="'resolution'" [(ngModel)]="mobile.resolution">
+                    <label for="floatingTextarea">Resolution</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="" [formControlName]  ="'sim'" [(ngModel)]="mobile.sim">
+                    <label for="floatingInputGrid">Sim</label>
+                  </div>
+                </div>
+              
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingTextarea"  placeholder="name@example.com" value= "" [formControlName]  ="'processor'" [(ngModel)]="mobile.processor">
+                    <label for="floatingTextarea">Processor</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInputGrid" [formControlName]="'os'" value="" placeholder="name@example.com"  [(ngModel)]="mobile.os">
+                    <label for="floatingInputGrid">OS</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value=""  [formControlName]  ="'color'" [(ngModel)]="mobile.color">
+                    <label for="floatingTextarea">Color</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-3">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingTextarea" placeholder="name@example.com" value=""  [formControlName]  ="'battery'" [(ngModel)]="mobile.battery">
+                    <label for="floatingTextarea">Battery</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="mb-4 d-flex justify-content-center flex-row">
+                <!-- <div class="mx-3">
+                  <button class="btn btn-danger text-uppercase px-3" type="" (click)="cancel()"><i class="fas fa-window-close"></i> Cancel</button>
+                </div> -->
+                  <div class="mx-3">
+                    <button class="btn button-success text-uppercase" type="" (click)="onSubmit()"><i class="fas fa-plus"></i> Update Details</button>
+                  </div>
+              </div>
+        </form>
+        <div [hidden]="!submitted">
+          <p>Mobile Details Updated Successfully</p>
+        </div>
+    </div>
+    
+</div>
+
