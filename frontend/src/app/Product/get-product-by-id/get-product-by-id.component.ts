@@ -25,11 +25,23 @@ export class GetProductByIdComponent implements OnInit {
   cartItem: CartItem = new CartItem();
   wishListItem:WishListItems = new WishListItems();
   userId: any;
+
+  ram:any;
+  rom:any;
+  camera:any;
+  processor:any;
+  resolution:any;
+  os:any;
+  color:any;
+  sim:any;
+  usbSlots:any;
+  battery:any;
   
   constructor(private cartService:CartService, private wishListService:WishListService, private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private mobileService: MobileService, private laptopService: LaptopService) { }
 
   ngOnInit(): void {
-    this.loadData()
+    this.loadData();
+    this.getProductTypeDetails();
   }
   
   loadData() {
@@ -55,48 +67,65 @@ export class GetProductByIdComponent implements OnInit {
   }
 
   getAllFeatures() {
-    this.getProductTypeDetails()
-  }
 
-  getColor() {
-    return this.item.color
-  }
-
-  getOS() {
-    return this.item.os
-  }
-  
-  getResolution() {
-    return this.item.resolution
-  }
-  
-  getCamera() {
-    return this.item.camera
-  }
-  
-  getProcessor() {
-    return this.item.processor
-  }
-  
-  getRam() {
-    return this.item.ram
-  }
-  
-  getRom() {
-    return this.item.rom
-  }
-  
-  getBattery() {
-    return this.item.battery
-  }
-
-  getFeature() {
-    if (this.product.productType === 'M') {
-      return this.item.sim
-    } else if (this.product.productType === 'L') {
-      return this.item.usbSlots
+    this.ram = this.item.ram;
+    this.rom = this.item.rom;
+    this.camera = this.item.camera;
+    this.resolution = this.item.resolution;
+    this.os = this.item.os;
+    this.color = this.item.color;
+    this.battery = this.item.battery;
+    this.processor = this.item.processor;
+    if(this.product.productType === 'M')
+      {
+        this.sim = this.item.sim;
+      }
+    else if(this.product.productType === 'L')
+    {
+      this.usbSlots = this.item.usbSlots;
     }
+
   }
+
+  // getColor() {
+  //   return this.item.color
+  // }
+
+  // getOS() {
+  //   return this.item.os
+  // }
+  
+  // getResolution() {
+  //   return this.item.resolution
+  // }
+  
+  // getCamera() {
+  //   return this.item.camera
+  // }
+  
+  // getProcessor() {
+  //   return this.item.processor
+  // }
+  
+  // getRam() {
+  //   return this.item.ram
+  // }
+  
+  // getRom() {
+  //   return this.item.rom
+  // }
+  
+  // getBattery() {
+  //   return this.item.battery
+  // }
+
+  // getFeature() {
+  //   if (this.product.productType === 'M') {
+  //     return this.item.sim
+  //   } else if (this.product.productType === 'L') {
+  //     return this.item.usbSlots
+  //   }
+  // }
 
   ngOnDestroy() {
     this.subject.unsubscribe();

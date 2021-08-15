@@ -26,8 +26,8 @@ public class PaymentController {
 	public String makePayment(@RequestBody Payment payment) {
 		return paymentService.makePayment(payment);
 	}
-	@GetMapping(path = "/payment/{userId}")
-	public List<Payment> getAllByUserId(@PathVariable(value = "userId")int userId){
+	@GetMapping(path = "/payments/{userId}")
+	public List<Payment> getAllPaymentByUserId(@PathVariable(value = "userId")int userId){
 		return paymentService.getAllByUserId(userId);
 	}
 	

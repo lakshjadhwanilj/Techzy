@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -17,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Payment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="payment_Id")
+	@SequenceGenerator(name ="payment_Id", sequenceName = "payment_Id", allocationSize =1)
 	@Column(name = "paymentId")
 	private int paymentId;
 

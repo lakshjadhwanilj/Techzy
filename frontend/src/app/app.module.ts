@@ -26,6 +26,7 @@ import { UpdateMobileComponent } from './Mobiles/update-mobile/update-mobile.com
 import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
 import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
 import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.com
     UpdateMobileComponent,
     AddLaptopComponent,
     GetAllLaptopsComponent,
-    UpdateLaptopComponent
+    UpdateLaptopComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

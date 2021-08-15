@@ -45,7 +45,7 @@
         <div class="col-md-4 px-4">
             <h3>Total Cost:</h3>
             <h2>{{getGrandTotal() | currency: 'INR'}}</h2>
-            <button class="btn button-success btn-lg w-100 text-uppercase py-3">Checkout</button>
+            <button (click) = "checkout(getGrandTotal())" class="btn button-success btn-lg w-100 text-uppercase py-3">Checkout</button>
         </div>
     </div>
 </div>

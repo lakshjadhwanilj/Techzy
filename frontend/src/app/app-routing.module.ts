@@ -20,6 +20,7 @@ import { GetAllMobilesComponent } from './Mobiles/get-all-mobiles/get-all-mobile
 import { GetAllLaptopsComponent } from './Laptops/get-all-laptops/get-all-laptops.component';
 import { AddLaptopComponent } from './Laptops/add-laptop/add-laptop.component';
 import { UpdateLaptopComponent } from './Laptops/update-laptop/update-laptop.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,7 @@ const routes: Routes = [
   { path: 'newProduct', component: AddProductComponent },
   { path: 'updateProduct/:productId', component: UpdateProductComponent },
   { path: 'cartItems/:userId', component: GetAllCartItemsComponent },
-  {path: 'userProfile/addContactDetails',component: AddContactDetailsComponent},
+  { path: 'userProfile/addContactDetails',component: AddContactDetailsComponent},
   { path: 'userProfile/updateContactDetails', component: UpdateContactDetailsComponent },
   { path: 'newMobile/:productId', component: AddMobileComponent },
   { path: 'updateMobile/:productId', component: UpdateMobileComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'updateLaptop/:productId', component: UpdateLaptopComponent },
   { path: 'mobiles', component: GetAllMobilesComponent },
   { path: 'laptops', component: GetAllLaptopsComponent },
+  { path: 'payment', component: CheckoutComponent },
   { path: '**', component: HomeComponent }
 ];
 

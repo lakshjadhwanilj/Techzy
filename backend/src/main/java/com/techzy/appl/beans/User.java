@@ -9,59 +9,43 @@ import org.hibernate.Session;
 
 @XmlRootElement
 @Entity
-@Table(name="Users")
+@Table(name = "Users")
 public class User {
-	
+
 	@Id
-	@Column(name="UserId")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "UserId")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_Id")
+	@SequenceGenerator(name = "user_Id", sequenceName = "user_Id", allocationSize = 1)
 	private int userId;
-	
-	@Column(name="UserName")
+
+	@Column(name = "UserName")
 	private String userName;
-	
-	@Column(name="UserEmail")
+
+	@Column(name = "UserEmail")
 	private String userEmail;
-	
-	@Column(name="userPassword")
+
+	@Column(name = "userPassword")
 	private String userPassword;
-	
-	@Column(name="UserType")
+
+	@Column(name = "UserType")
 	private String userType = "C";
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="CONTACTID", referencedColumnName = "CONTACTID")
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "CONTACTID", referencedColumnName = "CONTACTID")
 	private ContactDetails cd;
-	
-//	@OneToOne(mappedBy = "contactId", fetch = FetchType.LAZY)
-//	private List<ContactDetails> contactDetailList;
-	
-
-//	public List<ContactDetails> getContactDetailList() {
-//		return contactDetailList;
-//	}
-//
-//
-//	public void setContactDetailList(List<ContactDetails> contactDetailList) {
-//		this.contactDetailList = contactDetailList;
-//	}
-
 
 	public ContactDetails getCd() {
-	return cd;
+		return cd;
 	}
-
 
 	public void setCd(ContactDetails cd) {
 		this.cd = cd;
 	}
 
-
 	public User() {
 		super();
 	}
 
-	
 	public User(String userName, String userEmail, String userPassword, String userType) {
 		super();
 		this.userName = userName;
@@ -69,8 +53,6 @@ public class User {
 		this.userPassword = userPassword;
 		this.userType = userType;
 	}
-	
-
 
 	public User(int userId, String userName, String userEmail, String userPassword, String userType,
 			ContactDetails cd) {
@@ -82,9 +64,6 @@ public class User {
 		this.userType = userType;
 		this.cd = cd;
 	}
-	
-	
-
 
 	public int getUserId() {
 		return userId;
@@ -122,11 +101,9 @@ public class User {
 		return userType;
 	}
 
-
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-
 
 	@Override
 	public String toString() {
@@ -134,12 +111,4 @@ public class User {
 				+ userPassword + ", userType=" + userType + ", cd=" + cd + "]";
 	}
 
-
-	
-
-
-	
-	
-	
-	
 }
