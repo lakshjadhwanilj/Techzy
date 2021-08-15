@@ -19,16 +19,17 @@
           <small *ngIf = "var_email?.invalid && var_email?.touched" class = "text-danger">Email is not valid</small>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" pattern = "^[A-Za-z]\w{7,14}$" placeholder="Password" [formControlName]="'var_password'">
+          
+          <input type="password" class="form-control" id="floatingPassword" pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="Password" [formControlName]="'var_password'">
           <label for="floatingPassword">Password</label>
-          <!-- validation  -->
-          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password is required</small>
+           <!--validation  -->
+          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be of minimum length 8 and should contain atleast 1 Uppercase Letter, 1 lowercase letter, 1 digit and 1 Special Character(#?!@$%^&*-)</small>
       </div> 
-        <button [disabled] = signupform.invalid class="w-100 btn btn-lg button-success" type="submit">Sign up</button>
+        <button [disabled] = signupform.invalid class="w-100 btn btn-lg button-success" data-target="#successModal" type="submit">Sign up</button>
         <div class = "signin">
         <p>Already Have an Account? <a class = "signin success" routerLink = "/signin" >Signin</a></p>
         </div>
       </form>
     </main>
     <router-outlet></router-outlet>
-    
+    <!-- ^[A-Za-z]\w{7,14}$ -->

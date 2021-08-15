@@ -18,4 +18,6 @@ public interface UserDao {
 	public String deleteUser(int userId);
 
 	public String findUserTypeById(int userId);
+	
+	public String updateByEmail(User newUser);
 }

@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.techzy.appl.beans.CartItem;
 import com.techzy.appl.beans.Product;
 
 @Repository("prdDao")
@@ -38,7 +40,16 @@ public class ProductDaoImpl implements ProductDao{
 	public Product findProductById(int productId) {
 		return em.find(Product.class, productId);
 	}
-
+	
+	public List<Product> getProductListByRetailer(int userId){
+		String sql = "Select p From Product p where p.userId = :userId";
+		TypedQuery<Product> tq = em.createQuery(sql,Product.class);
+		tq.setParameter("userId", userId);
+		List<Product> productList = tq.getResultList();
+		System.out.println(productList);
+		return productList;
+	}
+	
 	@Override
 	@Transactional
 	public String updateProduct(int productId, Product newProduct) {

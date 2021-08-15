@@ -15,5 +15,7 @@ public String createProduct(Product p);
 	public String updateProduct(int productId, Product newProduct);
 	
 	public String deleteProduct(int productId);
+	
+	public List<Product> getProductListByRetailer(int userId);
 
 }

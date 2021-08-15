@@ -16,4 +16,6 @@ public interface ProductDao {
 	
 	public String deleteProduct(int productId);
 	
+	public List<Product> getProductListByRetailer(int userId);
+	
 }

@@ -4,6 +4,7 @@ export class Product {
     productDescription: string = ''
     productPrice: number = 0
     totalQuantity: number = 0
+    userId:number = 0 
     inStock: number = 0
     productType:string = ""
 }

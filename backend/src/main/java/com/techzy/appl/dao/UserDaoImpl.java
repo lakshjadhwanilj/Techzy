@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.techzy.appl.beans.CartItem;
 import com.techzy.appl.beans.User;
 
 @Repository("userDao")
@@ -51,7 +53,8 @@ public class UserDaoImpl implements UserDao{
 		System.out.println(user);
 		return "User updated";
 	}
-
+	
+	
 	@Override
 	@Transactional
 	public String deleteUser(int userId) {
@@ -64,6 +67,22 @@ public class UserDaoImpl implements UserDao{
 	public String findUserTypeById(int userId) {
 		User user = em.find(User.class, userId);
 		return user.getUserType();
+	}
+
+	@Override
+	@Transactional
+	public String updateByEmail(User newUser) {
+		String sql = "Select u From User u where u.userEmail = :email";
+		TypedQuery<User> tq = em.createQuery(sql,User.class);
+		tq.setParameter("email", newUser.getUserEmail());
+		User user = tq.getSingleResult();
+		user.setUserEmail(newUser.getUserEmail());
+		user.setUserName(user.getUserName());
+		user.setUserPassword(newUser.getUserPassword());
+		user.setUserType(user.getUserType());
+		user.setCd(user.getCd());
+		em.merge(user);
+		return "Password Changed Successfully";
 	}
 
 	

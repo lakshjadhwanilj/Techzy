@@ -1,0 +1,15 @@
+.retailer-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20rem;
+    /* padding: 9.5% 0 3% 0; */
+    align-items: center;
+}
+.retailer-header{
+    margin-right: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    /* max-width: 465px; */
+    font-weight: 500;
+    margin-top: 0;
+}

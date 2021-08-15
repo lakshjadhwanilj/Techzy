@@ -36,6 +36,9 @@ public class Product {
 	@Column(name = "inStock")
 	private int inStock;
 
+	@Column(name = "userId")
+	private int userId;
+	
 	@Column(name = "brandId")
 	private int brandId;
 
@@ -53,13 +56,36 @@ public class Product {
 		this.productType = productType;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(int productId, String productName, String productDescription, long productPrice, int totalQuantity,
-			int inStock, int brandId, String productType) {
+//	public Product(int productId, String productName, String productDescription, long productPrice, int totalQuantity,
+//			int inStock, int brandId, String productType) {
+//		super();
+//		this.productId = productId;
+//		this.productName = productName;
+//		this.productDescription = productDescription;
+//		this.productPrice = productPrice;
+//		this.totalQuantity = totalQuantity;
+//		this.inStock = inStock;
+//		this.brandId = brandId;
+//		this.productType = productType;
+//	}
+//	
+	
+
+	public Product(String productName, String productDescription, long productPrice, int totalQuantity,
+			int inStock, int userId, String productType) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -67,23 +93,21 @@ public class Product {
 		this.productPrice = productPrice;
 		this.totalQuantity = totalQuantity;
 		this.inStock = inStock;
-		this.brandId = brandId;
+		this.userId = userId;
 		this.productType = productType;
 	}
-	
-	
 
-	public Product(String productName, String productDescription, long productPrice, int totalQuantity, int inStock,
-			int brandId, String productType) {
-		super();
-		this.productName = productName;
-		this.productDescription = productDescription;
-		this.productPrice = productPrice;
-		this.totalQuantity = totalQuantity;
-		this.inStock = inStock;
-		this.brandId = brandId;
-		this.productType = productType;
-	}
+//	public Product(String productName, String productDescription, long productPrice, int totalQuantity, int inStock,
+//			int brandId, String productType) {
+//		super();
+//		this.productName = productName;
+//		this.productDescription = productDescription;
+//		this.productPrice = productPrice;
+//		this.totalQuantity = totalQuantity;
+//		this.inStock = inStock;
+//		this.brandId = brandId;
+//		this.productType = productType;
+//	}
 
 	public int getProductId() {
 		return productId;
@@ -153,7 +177,10 @@ public class Product {
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productDescription="
 				+ productDescription + ", productPrice=" + productPrice + ", totalQuantity=" + totalQuantity
-				+ ", inStock=" + inStock + ", brandId=" + brandId + ", productType=" + productType + "]";
+				+ ", inStock=" + inStock + ", userId=" + userId + ", brandId=" + brandId + ", productType="
+				+ productType + "]";
 	}
+
+	
 
 }

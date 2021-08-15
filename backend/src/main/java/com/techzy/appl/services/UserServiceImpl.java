@@ -52,7 +52,9 @@ public class UserServiceImpl implements UserService{
 		return userType;
 	}
 
-	
+	public String updateByEmail(User newUser) {
+		return userDao.updateByEmail(newUser);
+	}
 	
 	
 

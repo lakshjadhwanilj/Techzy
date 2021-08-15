@@ -12,6 +12,7 @@ import { Product } from '../Product';
 export class AddProductComponent implements OnInit {
 
   product:Product = new Product();
+  userIdNum:any;
   submitted:boolean= false;
   addProductForm:FormGroup;
   var_productType:string;
@@ -35,6 +36,8 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    let userId = sessionStorage.getItem("userId");	
+    this.userIdNum = Number(userId);	
   }
   get productType() {
     return this.addProductForm.get('productType');
@@ -72,6 +75,7 @@ export class AddProductComponent implements OnInit {
     this.product.totalQuantity = this.addProductForm.controls.productTotalQuantity.value;
     this.product.productName = this.addProductForm.controls.productName.value;
     this.product.productPrice =  this.addProductForm.controls.productPrice.value;
+    this.product.userId = this.userIdNum; 
 
     this.productService.addNewProduct(this.product).subscribe(data=> console.log(data))
     this.product = new Product();

@@ -33,7 +33,6 @@ export class UserProfileComponent implements OnInit {
   userObj: User = new User();
   userIdNum : number;
 
-
   updateUserProfileForm:FormGroup;
   error:string = '';
   submitted: boolean = false;
@@ -73,13 +72,12 @@ export class UserProfileComponent implements OnInit {
       this.userName = this.updateUserProfileForm.controls.var_name.value;
       this.userEmail = this.updateUserProfileForm.controls.var_email.value;
       this.userPassword = this.updateUserProfileForm.controls.var_password.value;
-      console.log('name: '+this.userName);
-      console.log('email: '+this.userEmail);
-      console.log('password: '+this.userPassword);
       this.userObj.userName=this.userName;
       this.userObj.userEmail=this.userEmail;
       this.userObj.userPassword=this.userPassword;
-      this.updateUser(this.userId);
+      this.updateUser(this.userIdNum);
+      sessionStorage.setItem("userName", this.userObj.userName)
+      sessionStorage.setItem("userPassword", this.userObj.userPassword)
       // this.user = new User();
       //sessionStorage.setItem(this.userEmail)
       // console.log("User added" + this.user);
@@ -104,6 +102,7 @@ export class UserProfileComponent implements OnInit {
     if(sessionStorage.getItem("userId")!=null){							
       let userId = sessionStorage.getItem("userId");	
       this.userIdNum = Number(userId);	
+
       this.getUser(this.userIdNum);	
     }
     //this.subject=this.activatedRoute.paramMap.subscribe(params=>{this.userId=params.get('userId')})

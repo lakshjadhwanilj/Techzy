@@ -50,4 +50,11 @@ public class ProductController {
 	public String deleteProduct(@PathVariable (value = "id") int productId) {
 		return productService.deleteProduct(productId);
 	}
+	
+	@GetMapping(path = "/retailerProducts/{userId}")
+	public List<Product> getProductListByRetailer(@PathVariable(value="userId")int userId) {
+		return productService.getProductListByRetailer(userId);
+	}
+	
+	
 }

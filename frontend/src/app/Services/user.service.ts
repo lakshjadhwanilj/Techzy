@@ -46,4 +46,7 @@ export class UserService {
     return this.http.put(`${this.baseUrl}`+'updateContact/'+id,contactDetails);
   }
   
+  updatePassword(user: User){ 
+    return this.http.put(`${this.baseUrl}`+'updatePassword/',user);
+  }
 }

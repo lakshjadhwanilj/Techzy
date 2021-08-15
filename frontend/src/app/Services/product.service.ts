@@ -16,6 +16,10 @@ export class ProductService {
     return  this.http.get<any[]>(`${this.baseUrl}`+'/products')
   }
 
+  getRetailerProducts(userId:number) {
+    return  this.http.get<any[]>(`${this.baseUrl}`+'/retailerProducts/'+userId);
+  }
+  
   getProductById(productId: any) {
     return this.http.get<any>(this.baseUrl + '/products/' + productId)
   }

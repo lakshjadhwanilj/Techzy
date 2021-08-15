@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { UserService } from '../Services/user.service';
 import { User } from '../user/User';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-signin',
@@ -16,9 +17,12 @@ export class SigninComponent implements OnInit {
   userEmail:string;
   userPassword:string;
   submitted: boolean = false;
-  invalidLogin: boolean=false;
+  invalidEmail: boolean=false;
+  invalidPassword: boolean = false;
   userList:User[]=[];
-  flag: number=0;
+  flagEmail: number=0;
+  flagPassword: number=1;
+  decryptedPassword:string;
   constructor(fb: FormBuilder, private router:Router,private userService:UserService) {
     this.signinform = fb.group({									
             var_email: ['', [Validators.required]],									
@@ -43,6 +47,10 @@ export class SigninComponent implements OnInit {
   
   }
 
+  decrypt(userPassword:string){
+    return CryptoJS.AES.decrypt(userPassword.trim(),'Techzy123').toString(CryptoJS.enc.Utf8);
+  }
+
    onSubmit(){
      
      this.submitted = true;
@@ -52,24 +60,46 @@ export class SigninComponent implements OnInit {
     
       
       for(var user of this.userList){
-        if (user.userEmail == this.userEmail && user.userPassword == this.userPassword) {
-          sessionStorage.setItem("userName", user.userName)
-          sessionStorage.setItem("userId",(user.userId).toString())
-          sessionStorage.setItem("userEmail", this.userEmail)
-          sessionStorage.setItem("userType", user.userType)
-          this.router.navigate(['home']);
-          this.signinform.reset();
-          this.invalidLogin=false;
-          this.flag=1;
+        if (user.userEmail == this.userEmail) {
+          // sessionStorage.setItem("userName", user.userName)
+          // sessionStorage.setItem("userId",(user.userId).toString())
+          // sessionStorage.setItem("userEmail", this.userEmail)
+          // sessionStorage.setItem("userType", user.userType)
+          // this.router.navigate(['home']);
+          //this.signinform.reset();
+          this.flagEmail=1;
+          this.decryptedPassword =this.decrypt(user.userPassword);
+          console.log(this.decryptedPassword);
+          if(this.decryptedPassword == this.userPassword){
+            this.flagPassword = 1; 
+            sessionStorage.setItem("userName", user.userName)
+            sessionStorage.setItem("userId",(user.userId).toString())
+            sessionStorage.setItem("userEmail", this.userEmail)
+            sessionStorage.setItem("userType", user.userType)
+
+            this.router.navigate(['home']);
+          }
+          else{
+            this.flagPassword = 0;
+          }
           break;
         }
-       }
-    if(this.flag==1){
-      this.invalidLogin=false;
-     }
-    else{
-      this.invalidLogin=true;
-    }
+        else{
+          this.flagEmail = 0;
+        }
+      }
+      if(this.flagEmail == 1){
+        this.invalidEmail=false;
+      }
+      else{
+        this.invalidEmail=true;
+      }
+      if(this.flagPassword == 1){
+        this.invalidPassword=false;
+      }
+      else{
+        this.invalidPassword=true;
+      }
      }
     }
 
