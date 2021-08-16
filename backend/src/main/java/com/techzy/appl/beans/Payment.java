@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "payments")
 public class Payment {
-
+	//Varaible declarations
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="payment_Id")
 	@SequenceGenerator(name ="payment_Id", sequenceName = "payment_Id", allocationSize =1)
@@ -42,12 +42,13 @@ public class Payment {
 	private Timestamp time; 
 	
 	//Timestamp.from(Instant.now());  
-
+	
+	// Default constructor
 	public Payment() {
 		super();
 	}
 
-
+	//Parameterized constructor
 	public Payment(int paymentAmount, String paymentType, String paymentStatus, int userId, LocalDate date,
 			Timestamp time) {
 		super();
@@ -80,6 +81,7 @@ public class Payment {
 		this.paymentStatus = paymentStatus;
 		this.userId = userId;
 	}
+	//Getter setters
 
 	public int getPaymentId() {
 		return paymentId;
@@ -139,7 +141,7 @@ public class Payment {
 		this.time = time;
 	}
 
-
+	//To print object on the console
 	@Override
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", paymentAmount=" + paymentAmount + ", paymentType=" + paymentType

@@ -19,7 +19,6 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { GetAllCartItemsComponent } from './Cart/get-all-cart-items/get-all-cart-items.component';
 import { AddContactDetailsComponent } from './user/contact-details/add-contact-details/add-contact-details.component';
 import { UpdateContactDetailsComponent } from './user/contact-details/update-contact-details/update-contact-details.component';
-import { GetAllWishListItemsComponent } from './WishList/get-all-wish-list-items/get-all-wish-list-items.component';
 import { RetailerComponent } from './retailer/retailer.component';
 import { RetailerProductsComponent } from './retailer/retailer-products/retailer-products.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -50,7 +49,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
     GetAllCartItemsComponent,
     AddContactDetailsComponent,
     UpdateContactDetailsComponent,
-    GetAllWishListItemsComponent,
     RetailerComponent,
     RetailerProductsComponent,
     ForgotPasswordComponent,

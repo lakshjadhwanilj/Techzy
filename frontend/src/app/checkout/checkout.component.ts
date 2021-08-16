@@ -12,6 +12,7 @@ export class CheckoutComponent implements OnInit {
   grandTotal: any;
 
   constructor(private router: Router) {
+    // calling render method of paypal button
     render({
       id:'#myPaypalButtons',
       currency:'INR',
@@ -24,6 +25,7 @@ export class CheckoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    // getting grand total
     this.grandTotal = sessionStorage.getItem('grandTotal')
     console.log(this.grandTotal)
   }
