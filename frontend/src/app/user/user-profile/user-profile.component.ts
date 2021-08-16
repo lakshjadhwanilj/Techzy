@@ -5,9 +5,11 @@ import { Product } from 'src/app/Product/Product';
 import { ProductService } from 'src/app/Services/product.service';
 import { UserService } from 'src/app/Services/user.service';
 import { WishListService } from 'src/app/Services/wish-list.service';
-import { WishListItems } from 'src/app/WishList/get-all-wish-list-items/WishListItems';
 import { User } from '../User';
 import * as CryptoJS from 'crypto-js';
+import { CheckoutService } from 'src/app/Services/checkout.service';
+import { Checkout } from 'src/app/checkout/Checkout';
+import { WishListItems } from '../WishListItems';
 
 
 @Component({
@@ -16,6 +18,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
 /*************************   wishlist part ***************************** */
   subject_wish: any;
   wishList: WishListItems[]=[];
@@ -23,7 +26,11 @@ export class UserProfileComponent implements OnInit {
   deleted:boolean = false;
   product:Product = new Product()
 
+  // orders / payments 
+  ordersList: Checkout[] = []
+
 //******************user part************* */
+  
   user:User = new User();
   userName: string;
   userEmail: string;
@@ -39,18 +46,20 @@ export class UserProfileComponent implements OnInit {
   updateUserProfileForm:FormGroup;
   error:string = '';
   submitted: boolean = false;
-  constructor(fb: FormBuilder,private productService: ProductService, private wishListService:WishListService, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) {
+
+  constructor(fb: FormBuilder, private wishListService:WishListService, private userService: UserService, private checkoutServcie: CheckoutService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.updateUserProfileForm = fb.group({	
             var_name:	['',[ Validators.required]],							
             var_email: ['', [Validators.required]],									
             var_password: ['',[ Validators.required]]	
     });
-   }
-   get var_name(){
+  }
+  
+  get var_name(){
     return this.updateUserProfileForm.get('var_name');
   }
 
-   get var_email(){
+  get var_email(){
      return this.updateUserProfileForm.get('var_email');
    }
 
@@ -103,21 +112,19 @@ export class UserProfileComponent implements OnInit {
     )
   }
   ngOnInit(): void {
-    if(sessionStorage.getItem("userId")!=null){							
+    if(sessionStorage.getItem("userId")!=null){
       let userId = sessionStorage.getItem("userId");	
       this.userIdNum = Number(userId);	
 
       this.getUser(this.userIdNum);	
     }
-    //this.subject=this.activatedRoute.paramMap.subscribe(params=>{this.userId=params.get('userId')})
-    //this.userService.getUserById(this.userId).subscribe(data=>{this.userObj=data})
-    
-    // this.subject_wish = this.activatedRoute.paramMap.subscribe(params => {
-    //   this.userId = params.get('userId')
-    // })
 
     this.wishListService.getAllWishListItemsByUserId(this.userIdNum).subscribe(data => {
       this.wishList = data
+    })
+
+    this.checkoutServcie.getAllPaymentByUserId(this.userIdNum).subscribe(data => {
+      this.ordersList = data
     })
     
   }

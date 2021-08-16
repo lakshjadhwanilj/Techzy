@@ -76,7 +76,6 @@ export class AddProductComponent implements OnInit {
     this.product = new Product();
     console.log("Product added" + this.product);
     this.addProductForm.reset()
-
   }
 
   onSubmit() {

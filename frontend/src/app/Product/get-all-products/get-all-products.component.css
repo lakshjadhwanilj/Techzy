@@ -23,9 +23,9 @@
 }
 
 .product-img>span {
-    background-color: #fff;
+    background-color: #26C999;
     box-shadow: 0 0 8px 1.7px rgba(0, 0, 0, 0.06);
-    color: #333;
+    color: #fff;
     display: inline-block;
     font-size: 12px;
     font-weight: 500;
