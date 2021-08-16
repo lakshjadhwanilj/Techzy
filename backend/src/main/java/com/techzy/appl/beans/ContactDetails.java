@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "Contact_Details")
 public class ContactDetails {
 
+	//Variable Declarations
 	@Id
 	@Column(name = "ContactId")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="contact_Id")
@@ -32,11 +33,13 @@ public class ContactDetails {
 	@Column(name = "ShippingAddress")
 	private String shippingAddress;
 
+	//Default Constructor
 	public ContactDetails() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
+	
+	//parameterized constructor
 	public ContactDetails(String primaryPhoneNo, String secondaryPhoneNo, String primaryAddress,
 			String shippingAddress) {
 		super();
@@ -45,6 +48,8 @@ public class ContactDetails {
 		this.primaryAddress = primaryAddress;
 		this.shippingAddress = shippingAddress;
 	}
+	
+	//Getter Setters
 
 	public int getContactId() {
 		return ContactId;
@@ -86,6 +91,7 @@ public class ContactDetails {
 		this.shippingAddress = shippingAddress;
 	}
 
+	//To print object onto the console
 	@Override
 	public String toString() {
 		return "ContactDetails [ContactId=" + ContactId + ", primaryPhoneNo=" + primaryPhoneNo + ", secondaryPhoneNo="

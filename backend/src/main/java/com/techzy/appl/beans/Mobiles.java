@@ -17,6 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "MOBILES")
 public class Mobiles implements Serializable {
+	
+	//Variable declarations
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,10 +53,12 @@ public class Mobiles implements Serializable {
 	@Column(name = "battery")
 	private int battery;
 
+	//Default Constructors
 	public Mobiles() {
 		super();
 	}
 
+	//Parameterized Constructors
 	public Mobiles(int productId, String ram, String rom, String camera, String resolution, String sim,
 			String processor, String os, String color, int battery) {
 		super();
@@ -84,6 +88,7 @@ public class Mobiles implements Serializable {
 		this.battery = battery;
 	}
 
+	//Getter Setters
 	public int getProductId() {
 		return productId;
 	}
@@ -168,6 +173,7 @@ public class Mobiles implements Serializable {
 		return serialVersionUID;
 	}
 
+	//To print the object onto the console
 	@Override
 	public String toString() {
 		return "Mobiles [productId=" + productId + ", ram=" + ram + ", rom=" + rom + ", camera=" + camera
