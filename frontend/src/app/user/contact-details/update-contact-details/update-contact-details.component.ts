@@ -57,6 +57,7 @@ export class UpdateContactDetailsComponent implements OnInit {
     this.userService.updateContact(this.userIdNum,this.contactDetails).subscribe(data =>{
       console.log(data)
     })
+    this.router.navigate(['userProfile'])
    }
 
    getUser(userId: number) {

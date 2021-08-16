@@ -57,6 +57,7 @@ export class AddContactDetailsComponent implements OnInit {
     this.userService.createContact(this.userIdNum,this.contactDetails).subscribe(data =>{
       console.log(data)
     })
+     this.router.navigate(['userProfile'])
    }
 
    getUser(userId: number) {
@@ -103,6 +104,6 @@ export class AddContactDetailsComponent implements OnInit {
       this.getUser(this.userIdNum);					
     }
   }
-  
+
 
 }

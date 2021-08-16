@@ -24,13 +24,15 @@
                         <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be of minimum length 8 and should contain atleast 1 Uppercase Letter, 1 lowercase letter, 1 digit and 1 Special Character(#?!@$%^&*-)</small>
                     </div>
                     <div class="row px-2 my-2">
-                        <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success text-uppercase"><i class="fas fa-edit"></i> UPDATE</button>
+                        <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success text-uppercase"><i class="fas fa-edit"></i> UPDATE Profile</button>
                     </div>
                     <div class="row px-2 mb-3" *ngIf="!userObj.cd; else updateBtn" >
                         <button type="submit" class="btn-block btn btn-lg button-outline-success text-uppercase" [routerLink]="['addContactDetails']"><i class="fas fa-plus"></i> Add contact</button>
                     </div>
                     <ng-template #updateBtn>
-                        <button type="submit" class="btn-block btn btn-lg button-outline-success text-uppercase" [routerLink]="['updateContactDetails']"><i class="fas fa-edit"></i> Update contact</button>
+                        <div class="row px-2 mb-3">
+                            <button type="submit" class="btn-block btn btn-lg button-outline-success text-uppercase" [routerLink]="['updateContactDetails']"><i class="fas fa-edit"></i> Update contact</button>
+                        </div>
                     </ng-template>
                     <div [hidden] = "!submitted" class="alert alert-success" role="alert">
                         Profile updated Successfully
@@ -42,6 +44,9 @@
                 <div class="row px-3">            
                     <h3 class="h3 px-0">Your WishList</h3>
                     <p class="lead px-0">You have {{wishList.length}} items in your WishList.</p>
+                    <div [hidden]="!deleted" class="alert alert-warning" role = "alert">
+                        Product removed from wishlist successfully!
+                    </div>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -63,11 +68,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-8">
-                        <div [hidden]="!deleted" class="alert alert-warning" role = "alert">
-                            Product removed from cart Successfully
-                        </div>
+                        
                         <table class="table" >
                             <thead>
                                 <tr>
@@ -97,7 +100,7 @@
                     </div>
                     
         
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
