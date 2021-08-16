@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.techzy.appl.beans.CartItem;
 import com.techzy.appl.beans.User;
+import com.techzy.appl.excp.UserNotFoundException;
 
 @Repository("userDao")
 @EnableTransactionManagement
@@ -36,9 +37,13 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User findUserById(int userId) {
+	public User findUserById(int userId) throws UserNotFoundException {
 		System.out.println("Dao Layer ----");
-		return em.find(User.class, userId);
+		User u = em.find(User.class, userId);
+		if(u == null) {
+			throw new UserNotFoundException("No user found"); 
+		}
+		return u;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.techzy.appl.services;
 import java.util.List;
 
 import com.techzy.appl.beans.User;
+import com.techzy.appl.excp.UserNotFoundException;
 
 public interface UserService {
 	
@@ -10,7 +11,7 @@ public interface UserService {
 
 	public List<User> getUserList();
 
-	public User findUserById(int userId);
+	public User findUserById(int userId) throws UserNotFoundException;
 
 	public String updateUser(int userId, User newUser);
 	

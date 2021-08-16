@@ -23,13 +23,16 @@
                         <!-- validation  -->
                         <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be of minimum length 8 and should contain atleast 1 Uppercase Letter, 1 lowercase letter, 1 digit and 1 Special Character(#?!@$%^&*-)</small>
                     </div>
-                        <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success">UPDATE</button>
-                    <div *ngIf="!userObj.cd; else updateBtn" >
-                        <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['addContactDetails']">Add contact</button>
+                        <button [disabled] = updateUserProfileForm.invalid type="submit" class="btn-block btn btn-lg button-success updateBtn">UPDATE</button>
+                    <div *ngIf="!userObj.cd; else updateBtn">
+                        <button type="submit" class="btn-block btn btn-lg button-success addUpdateBtn" [routerLink]="['addContactDetails']">Add contact</button>
                     </div>
                     <ng-template #updateBtn>
-                        <button type="submit" class="btn-block btn btn-lg button-success" [routerLink]="['updateContactDetails']">Update contact</button>
+                        <button type="submit" class="btn-block btn btn-lg button-success addUpdateBtn" [routerLink]="['updateContactDetails']">Update contact</button>
                     </ng-template>
+                    <div [hidden] = "!submitted" class="alert alert-success" role="alert">
+                        Profile updated Successfully
+                    </div>
 	            </form>
             </div>
             <!-- <div class="container px-4">
@@ -40,6 +43,9 @@
                 </div>
                 <div class="row"> -->
                     <div class="col-md-8">
+                        <div [hidden]="!deleted" class="alert alert-warning" role = "alert">
+                            Product removed from cart Successfully
+                        </div>
                         <table class="table" >
                             <thead>
                                 <tr>
@@ -67,6 +73,7 @@
                             </tbody>
                         </table>
                     </div>
+                    
         </div>
     </div>
 </main>

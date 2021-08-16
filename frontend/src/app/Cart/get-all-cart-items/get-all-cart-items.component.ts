@@ -16,6 +16,7 @@ import { CartItem } from '../CartItem';
 })
 export class GetAllCartItemsComponent implements OnInit {
 
+  deleted :boolean = false;
   subject: any
   userId: any
   cartList: CartItem[] = []
@@ -48,6 +49,7 @@ export class GetAllCartItemsComponent implements OnInit {
     this.cartService.deleteCartItem(cartItemId).subscribe(data => {
       console.log(data)
     })
+    this.deleted = true;
   }
 
   get newQuantity() {

@@ -1,6 +1,9 @@
 <div class="container px-4">
     <h3 class="mt-4">List of Added Products</h3>
     <p class="lead">You have {{productList.length}} products on Techzy.</p>
+    <div [hidden] = "!deleted" class="alert alert-warning" role="alert">
+        Product deleted Successfully
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>

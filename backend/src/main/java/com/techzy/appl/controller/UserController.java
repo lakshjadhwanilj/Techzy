@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techzy.appl.beans.User;
+import com.techzy.appl.excp.UserNotFoundException;
 import com.techzy.appl.services.UserServiceImpl;
 
 @CrossOrigin(origins="*")
@@ -42,7 +43,14 @@ public class UserController {
 	
 	@GetMapping(path = "/user/{id}" , produces = "application/json")
 	public User findUserByID(@PathVariable(value="id")int userId) {
-		return userService.findUserById(userId);
+		User u = new User();
+		try {
+			u = userService.findUserById(userId);
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return u;
 	}
 	
 	@GetMapping(path = "/findUserType/{id}" , produces = "application/json")

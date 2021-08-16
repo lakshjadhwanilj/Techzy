@@ -63,7 +63,7 @@
             <p><span class="me-1"><strong>{{product.productPrice | currency: "INR"}}</strong></span></p>
             <p class="pt-1">{{product.productDescription}}</p>
             <div [hidden]>{{getAllFeatures()}}</div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <div class="row">
                         <div class="col"><th class="ps-0 w-25" scope="row"><strong>Model</strong></th></div>
@@ -108,8 +108,8 @@
                         <div class="col" *ngIf = "product.productType === 'M'">  <td>{{sim}}</td></div>
                         <div class="col" *ngIf = "product.productType === 'L'">  <td>{{usbSlots}}</td></div>
                     </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
             <hr>
             <!-- <button type="button"  class="btn button-success text-uppercase px-4 me-1 mb-2">
                 Buy now
@@ -120,6 +120,9 @@
             <button type="button" (click)="addToWishList(product)" class="btn btn-danger text-uppercase px-4 me-1 mb-2">
                 <i class="fas fa-heart"></i> wishlist
             </button>
+            <div *ngIf = "clicked" class="alert alert-success" role = "alert">
+                Product Added to Cart
+            </div>
         </div>
     </div>
 </section>

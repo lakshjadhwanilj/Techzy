@@ -11,6 +11,8 @@ export class RetailerProductsComponent implements OnInit {
 
   userIdNum:any;
   productList: Product[] = []
+  updated:boolean = false;
+  deleted:boolean = false;
 
   constructor(private productService:ProductService) { }
 
@@ -23,6 +25,7 @@ export class RetailerProductsComponent implements OnInit {
 
   deleteProduct(productId: number){
     this.productService.deleteProduct(productId).subscribe(data => console.log(data))
+    this.deleted = true;
   }
 
   ngOnInit(): void {
