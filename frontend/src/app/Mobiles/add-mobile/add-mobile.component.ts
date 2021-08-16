@@ -69,7 +69,7 @@ export class AddMobileComponent implements OnInit {
     })
     this.mobile = new Mobiles()
     console.log("Mobile data added " + this.mobile)
-    this.router.navigate(['home']);
+    this.router.navigate(['dashboard/products']);
   }
 
 }

@@ -76,7 +76,7 @@ export class AddProductComponent implements OnInit {
     this.product = new Product();
     console.log("Product added" + this.product);
     this.addProductForm.reset()
-    // this.router.navigate(['newMobile/'+this.prod])
+
   }
 
   onSubmit() {
@@ -86,7 +86,7 @@ export class AddProductComponent implements OnInit {
 
   cancel(): void {
     this.addProductForm.reset()
-    this.router.navigate(['home']);
+    this.router.navigate(['dashboard']);
   }
 
 }

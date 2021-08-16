@@ -17,6 +17,8 @@ export class UpdateProductComponent implements OnInit {
   subject: any;
   productId: any;
   product: any;
+  mobile: any;
+  laptop: any;
   
   updateProductForm:FormGroup;
 
@@ -37,7 +39,13 @@ export class UpdateProductComponent implements OnInit {
       this.productId = params.get('productId')
     })
     this.productService.getProductById(this.productId).subscribe(data =>{
-      this.product = data;
+      this.product = data
+    })
+    this.mobileService.getMobilebyId(this.productId).subscribe(data => {
+      this.mobile = data
+    })
+    this.laptopService.getLaptopbyId(this.productId).subscribe(data => {
+      this.laptop = data
     })
   }
 
@@ -82,15 +90,36 @@ export class UpdateProductComponent implements OnInit {
     this.save()
   }
   
-  delete() {
+  addMoreDetails() {
     if (this.product.productType === 'M') {
-      this.mobileService.deleteMobile(this.productId).subscribe(data => console.log(data))
+      this.router.navigate(['newMobile/'+this.productId])
     } else if (this.product.productType === 'L') {
-      this.laptopService.deleteLaptop(this.productId).subscribe(data => console.log(data))
+      this.router.navigate(['newLaptop/'+this.productId])
     }
-    this.productService.deleteProduct(this.productId).subscribe(data => console.log(data))
-    this.updateProductForm.reset()
-    this.router.navigate(['home'])
+  }
+
+  editMoreDetails() {
+    if (this.product.productType === 'M') {
+      this.router.navigate(['updateMobile/'+this.productId])
+    } else if (this.product.productType === 'L') {
+      this.router.navigate(['updateLaptop/'+this.productId])
+    }
+  }
+
+  // delete() {
+  //   if (this.product.productType === 'M') {
+  //     this.mobileService.deleteMobile(this.productId).subscribe(data => console.log(data))
+  //   } else if (this.product.productType === 'L') {
+  //     this.laptopService.deleteLaptop(this.productId).subscribe(data => console.log(data))
+  //   }
+  //   this.productService.deleteProduct(this.productId).subscribe(data => console.log(data))
+  //   this.updateProductForm.reset()
+  //   this.router.navigate(['home'])
+  // }
+
+  cancel(): void {
+    // this.updateProductForm.reset()
+    this.router.navigate(['dashboard/products']);
   }
   
 }

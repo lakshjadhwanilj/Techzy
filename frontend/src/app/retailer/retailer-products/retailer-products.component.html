@@ -1,15 +1,20 @@
 <div class="container px-4">
-    <h3 class="mt-4">List of Added Products</h3>
+    <div *ngIf="productList.length === 0" class="text-center mt-2">
+        <img src="/assets/images/No-Product-Found.png" alt="">
+        <h3 class="mb-0">Oops! You have no products on Techzy!</h3>
+    </div>
+    <div *ngIf="productList.length>0" class="row mt-4">
+    <h3 class="h-3">List of Added Products</h3>
     <p class="lead">You have {{productList.length}} products on Techzy.</p>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>Product Name</th>
-                <th>Product Description</th>
-                <th>Product Price</th>
-                <th>Total Quantity</th>
-                <th>In Stock</th>
-                <th>Product Type</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th class="text-center">Total Quantity</th>
+                <th class="text-center">In Stock</th>
+                <th class="text-center">Product Type</th>
                 <th class="text-center">Modify</th>
                 <th class="text-center">Delete</th>
             </tr>
@@ -18,7 +23,7 @@
               <tr *ngFor="let p of productList;">       
                 <td class="my-2 align-middle"> {{p.productName}} </td>
                 <td class="my-2 align-middle"> {{p.productDescription}} </td>
-                <td class="my-2 align-middle"> {{p.productPrice}} </td> 
+                <td class="my-2 align-middle"> {{p.productPrice | currency: 'INR'}} </td> 
                 <td class="my-2 align-middle text-center"> {{p.totalQuantity}}</td>
                 <td class="my-2 align-middle text-center"> {{p.inStock}}</td>  
                 <td class="my-2 align-middle text-center"> {{p.productType}}</td>
@@ -41,5 +46,5 @@
 
         </tbody>
     </table>
-
+    </div>
 </div>

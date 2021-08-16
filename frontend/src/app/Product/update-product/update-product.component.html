@@ -54,11 +54,17 @@
               </div>
               <div class="mb-4 d-flex justify-content-center flex-row">
                 <div class="mx-3">
-                  <button class="btn btn-danger text-uppercase" type="" (click)="delete()"><i class="fas fa-trash"></i> Delete</button>
+                  <button class="btn btn-danger text-uppercase" type="" (click)="cancel()"><i class="fas fa-window-close"></i> Cancel</button>
                 </div>
-                  <div class="mx-3">
-                    <button class="btn button-success text-uppercase" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Update</button>
-                  </div>
+                <div class="mx-3">
+                  <button class="btn button-success text-uppercase" type="submit" (click)="onSubmit()"><i class="fas fa-edit"></i> Update</button>
+                </div>
+                <div class="mx-3" *ngIf="!(this.mobile || this.laptop)">
+                  <button class="btn button-success text-uppercase" type="submit" (click)="addMoreDetails()"><i class="fas fa-edit"></i> Add more details</button>
+                </div>
+                <div class="mx-3" *ngIf="this.mobile || this.laptop">
+                  <button class="btn button-success text-uppercase" type="submit" (click)="editMoreDetails()"><i class="fas fa-edit"></i> Edit more details</button>
+                </div>
               </div>
         </form>
         <div [hidden]="!submitted">
