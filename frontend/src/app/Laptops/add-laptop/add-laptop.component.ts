@@ -69,7 +69,7 @@ export class AddLaptopComponent implements OnInit {
     })
     this.laptop = new Laptops()
     console.log("Laptop data added " + this.laptop)
-    this.router.navigate(['home']);
+    this.router.navigate(['dashboard/products']);
   }
 
 }

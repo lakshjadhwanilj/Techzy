@@ -77,4 +77,9 @@ export class UpdateMobileComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
+  cancel(): void {
+    // this.updateProductForm.reset()
+    this.router.navigate(['dashboard/products']);
+  }
+  
 }

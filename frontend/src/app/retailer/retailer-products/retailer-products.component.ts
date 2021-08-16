@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Product/Product';
 import { ProductService } from 'src/app/Services/product.service';
 
@@ -11,8 +12,10 @@ export class RetailerProductsComponent implements OnInit {
 
   userIdNum:any;
   productList: Product[] = []
+  updated:boolean = false;
+  deleted:boolean = false;
 
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService, private router: Router) { }
 
   getProductList(){
     this.productService.getRetailerProducts(this.userIdNum).subscribe(data => {
@@ -23,6 +26,7 @@ export class RetailerProductsComponent implements OnInit {
 
   deleteProduct(productId: number){
     this.productService.deleteProduct(productId).subscribe(data => console.log(data))
+    this.deleted = true;
   }
 
   ngOnInit(): void {

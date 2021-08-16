@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.techzy.appl.beans.User;
 import com.techzy.appl.dao.UserDao;
+import com.techzy.appl.excp.UserNotFoundException;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User findUserById(int userId) {
+	public User findUserById(int userId) throws UserNotFoundException{
 		System.out.println("Service layer ---- Find User");
 		User user = userDao.findUserById(userId);
 //		System.out.println(myList);

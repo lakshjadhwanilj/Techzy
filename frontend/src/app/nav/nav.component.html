@@ -23,6 +23,11 @@
                             <i class="fas fa-users success"></i> Users
                         </a>
                     </li>
+                    <li class="nav-item" *ngIf="userType == 'R'">
+                        <a class="nav-link" routerLink="/dashboard">
+                            <i class="fas fa-users success"></i> Dashbord
+                        </a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-th-large success"></i> All Categories
@@ -37,11 +42,6 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" routerLink="products">All Products</a>
                         </div>
-                    </li>
-                    <li class="nav-item" *ngIf="!userId">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-balance-scale-left success"></i> Compare
-                        </a>
                     </li>
                     <li class="nav-item" *ngIf="!userId">
                         <a class="nav-link" routerLink="signin" ><i class="fas fa-sign-in-alt success"></i> Login</a>
@@ -81,7 +81,6 @@
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a routerLink="/" class="nav-link px-2 text-muted">Home</a></li>
             <li class="nav-item"><a routerLink="/products" class="nav-link px-2 text-muted">Products</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Compare</a></li>
             <li class="nav-item" *ngIf="userId"><a routerLink="cartItems/{{userId}}" class="nav-link px-2 text-muted">Cart</a></li>
             <li class="nav-item"><a routerLink="/about" class="nav-link px-2 text-muted">About</a></li>
         </ul>

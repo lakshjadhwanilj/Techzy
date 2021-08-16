@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techzy.appl.beans.ContactDetails;
 import com.techzy.appl.beans.User;
+import com.techzy.appl.excp.UserNotFoundException;
 import com.techzy.appl.services.ContactService;
 import com.techzy.appl.services.ContactServiceImpl;
 import com.techzy.appl.services.UserServiceImpl;
@@ -31,7 +32,13 @@ public class ContactController {
 	
 	@PostMapping("/addnewcontact/{userId}")
 	public void createContact(@PathVariable(value="userId") int userId, @RequestBody ContactDetails contact) {
-		User user = userService.findUserById(userId);
+		User user = new User();
+		try {
+			user = userService.findUserById(userId);
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ContactDetails cd = new ContactDetails(contact.getPrimaryPhoneNo(),contact.getSecondaryPhoneNo(),contact.getPrimaryAddress(),contact.getShippingAddress());
 		user.setCd(cd);
 		System.out.println(cd);

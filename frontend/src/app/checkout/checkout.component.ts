@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { render } from 'creditcardpayments/creditCardPayments';
 
 @Component({
@@ -10,13 +11,14 @@ export class CheckoutComponent implements OnInit {
 
   grandTotal: any;
 
-  constructor() {
+  constructor(private router: Router) {
     render({
       id:'#myPaypalButtons',
       currency:'INR',
-      value:"40000",
+      value:"30000",
       onApprove:(details) => {
         alert("Transaction Successfull")
+        this.router.navigate(['home'])
       }
     })
    }

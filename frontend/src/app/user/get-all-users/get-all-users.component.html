@@ -1,6 +1,12 @@
 <div class="container px-4">
     <h3 class="mt-4">List of Registered Users</h3>
     <p class="lead">You have {{userList.length}} users on your app.</p>
+    <div [hidden]="!updated" class="alert alert-success" role = "alert">
+        Customer has been Successfully updated to Retailer
+    </div>
+    <div [hidden]="!deleted" class="alert alert-warning" role = "alert">
+        User deleted Successfully
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>

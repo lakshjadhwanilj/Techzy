@@ -1,6 +1,6 @@
 <div class="container">
     <div class="my-4">
-        <h3 class="h3">Add details about {{product.productName}}</h3>
+        <h3 class="h3">Update details about {{product.productName}}</h3>
     </div>
     <div class="mt-3">
         <form [formGroup] = "updateLaptopForm">
@@ -69,12 +69,12 @@
 
               </div>
               <div class="mb-4 d-flex justify-content-center flex-row">
-                <!-- <div class="mx-3">
-                  <button class="btn btn-danger text-uppercase px-3" type="" (click)="cancel()"><i class="fas fa-window-close"></i> Cancel</button>
-                </div> -->
-                  <div class="mx-3">
-                    <button class="btn button-success text-uppercase" type="" (click)="onSubmit()"><i class="fas fa-plus"></i> Update Details</button>
-                  </div>
+                <div class="mx-3">
+                  <button class="btn btn-danger text-uppercase" type="" (click)="cancel()"><i class="fas fa-window-close"></i> Cancel</button>
+                </div>
+                <div class="mx-3">
+                  <button class="btn button-success text-uppercase" type="" (click)="onSubmit()"><i class="fas fa-edit"></i> Update Details</button>
+                </div>
               </div>
         </form>
         <div [hidden]="!submitted">

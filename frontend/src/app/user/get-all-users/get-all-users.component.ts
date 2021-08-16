@@ -14,6 +14,8 @@ export class GetAllUsersComponent implements OnInit {
   userObj: any;
   userId:number;
   userType: string;
+  deleted:boolean = false;
+  updated:boolean = false;
  
   constructor(private UserService: UserService, private router: Router) { 
 
@@ -29,6 +31,7 @@ export class GetAllUsersComponent implements OnInit {
       this.ngOnInit();
       })
     this.router.navigate(['users']);
+    this.deleted = true;
   }
 
   updateUserType(u:User){
@@ -36,6 +39,7 @@ export class GetAllUsersComponent implements OnInit {
     u.userType="R";
     
     this.UserService.updateUser(u.userId,u).subscribe(data=>console.log (data))
+    this.updated = true;
   }
   loadUsersData(){
     this.UserService.getUserList().subscribe(
