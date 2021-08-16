@@ -17,6 +17,10 @@
     margin: 0 auto;
 }
 
+p {
+    text-align: justify;
+}
+
 @media (max-width: 768px) {
     .carousel-item {
         height: 250px;

@@ -11,8 +11,8 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  user:User = new User();
 
+  user:User = new User();
   userEmail: string;
   userNewPassword: string;
   userConfirmPassword: string;
@@ -22,7 +22,9 @@ export class ForgotPasswordComponent implements OnInit {
   forgotform:FormGroup;
   error:string = '';
   submitted: boolean = false;
-  constructor(fb: FormBuilder, private userService: UserService, private router:Router) {
+
+  constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
+    // building the form
     this.forgotform = fb.group({								
             var_email: ['', [Validators.required]],									
             var_newPassword: ['',[ Validators.required]],
@@ -42,16 +44,20 @@ export class ForgotPasswordComponent implements OnInit {
     return this.forgotform.get('var_confirmPassword');
   }
 
-  encrypt(password:String){
-    return CryptoJS.AES.encrypt(password.trim(),'Techzy123').toString();
- }
+  // encrypting the password
+  encrypt(password: String) {
+    return CryptoJS.AES.encrypt(password.trim(), 'Techzy123').toString();
+  }
 
- onSubmit(){
-   this.error = '';
-   if(this.forgotform.valid){
+  // on submitting the form
+  onSubmit() {
+    this.error = '';
+    // check if form is valid
+    if(this.forgotform.valid){
       this.userEmail = this.forgotform.controls.var_email.value;
       this.userNewPassword = this.forgotform.controls.var_newPassword.value;
       this.userConfirmPassword = this.forgotform.controls.var_confirmPassword.value;
+      // check if new password is equal to confirm password
       if(this.userNewPassword == this.userConfirmPassword){
         this.passwordNotSame = false;
         this.encryptedPassword = this.encrypt(this.userNewPassword);
@@ -62,17 +68,15 @@ export class ForgotPasswordComponent implements OnInit {
         this.userService.updatePassword(this.user).subscribe(data => console.log(data), error => console.log(error));
         this.submitted = true;
         console.log("Password Updated" + this.user);
+      } else {
+        this.passwordNotSame = true;
       }
-     else{
-       this.passwordNotSame = true;
-     }
-   }
-   if(this.passwordNotSame == false){
-    this.router.navigate(['signin']);
-   }
- }
+    }
+    if(this.passwordNotSame == false){
+      this.router.navigate(['signin']);
+    }
+  }
  
-
   ngOnInit(): void {
   }
 

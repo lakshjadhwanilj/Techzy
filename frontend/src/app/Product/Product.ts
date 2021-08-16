@@ -6,5 +6,5 @@ export class Product {
     totalQuantity: number = 0
     userId:number = 0 
     inStock: number = 0
-    productType:string = ""
+    productType: string = ''
 }

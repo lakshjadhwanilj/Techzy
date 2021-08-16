@@ -3,19 +3,20 @@
         <img src="/assets/images/No-Product-Found.png" alt="">
         <h3 class="mb-0">Oops! No product found in this category!</h3>
     </div>
-    <div *ngIf="productList.length>0" class="row mt-4">
+    <div *ngIf="productList.length>0" class="row mt-4 px-3">
         <h3>All Mobiles</h3>
         <div class="col-sm-6 col-md-4 col-lg-3" *ngFor = "let product of productList">
             <div class="product-wrapper mb-45 text-center">
                 <div class="product-img"> 
                     <a routerLink="/products/{{product.productId}}" data-abc="true"> 
-                        <img src="assets/images/macbookPro1.jpg" alt=""> 
+                        <img src='{{"assets/images/" + product.productId + ".jpg"}}' alt=""> 
                     </a>
                     <span class="text-center">{{product.productPrice | currency: "INR"}}</span>
                     <div class="product-action">
                         <div class="product-action-style"> <a href="#"> <i class="fa fa-plus"></i> </a> <a href="#"> <i class="fa fa-heart"></i> </a> <a href="#"> <i class="fa fa-shopping-cart"></i> </a> </div>
                     </div>
                 </div>
+                <span class="text-center fw-bold">{{product.productName}}</span>
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ export class GetProductByIdComponent implements OnInit {
   cartItem: CartItem = new CartItem();
   wishListItem:WishListItems = new WishListItems();
   userId: any;
-  clicked:boolean = false;
+  clickedCart:boolean = false;
 
   ram:any;
   rom:any;
@@ -43,6 +43,7 @@ export class GetProductByIdComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
     this.getProductTypeDetails();
+    this.clickedCart = false
   }
   
   loadData() {
@@ -88,46 +89,6 @@ export class GetProductByIdComponent implements OnInit {
 
   }
 
-  // getColor() {
-  //   return this.item.color
-  // }
-
-  // getOS() {
-  //   return this.item.os
-  // }
-  
-  // getResolution() {
-  //   return this.item.resolution
-  // }
-  
-  // getCamera() {
-  //   return this.item.camera
-  // }
-  
-  // getProcessor() {
-  //   return this.item.processor
-  // }
-  
-  // getRam() {
-  //   return this.item.ram
-  // }
-  
-  // getRom() {
-  //   return this.item.rom
-  // }
-  
-  // getBattery() {
-  //   return this.item.battery
-  // }
-
-  // getFeature() {
-  //   if (this.product.productType === 'M') {
-  //     return this.item.sim
-  //   } else if (this.product.productType === 'L') {
-  //     return this.item.usbSlots
-  //   }
-  // }
-
   ngOnDestroy() {
     this.subject.unsubscribe();
   }
@@ -137,15 +98,15 @@ export class GetProductByIdComponent implements OnInit {
   }
 
   addToCart(p: any) {
-    this.clicked = true;
-    console.log(this.clicked)
+    
+    // console.log(this.clicked)
     if (this.userId) {
       this.cartItem.productName = p.productName
       this.cartItem.quantity = 1
       this.cartItem.productPrice = p.productPrice
       this.cartItem.userId = this.userId
       this.cartService.createCartItem(this.cartItem).subscribe()
-      
+      this.clickedCart = true
     } else {
       this.router.navigate(['signin'])
     }
