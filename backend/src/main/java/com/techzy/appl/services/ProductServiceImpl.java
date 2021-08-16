@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.techzy.appl.beans.Product;
 import com.techzy.appl.dao.ProductDao;
+import com.techzy.appl.excp.ProductNotUpdatedException;
 
 @Service("prdService")
 public class ProductServiceImpl implements ProductService {
@@ -30,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public String updateProduct(int productId, Product newProduct) {
+	public String updateProduct(int productId, Product newProduct) throws ProductNotUpdatedException{
 
 		return productDao.updateProduct(productId, newProduct);
 	}

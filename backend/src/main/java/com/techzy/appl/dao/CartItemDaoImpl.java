@@ -41,8 +41,11 @@ public class CartItemDaoImpl implements CartItemDao{
 	@Transactional
 	public String deleteCartItem(int cartItemId) {
 		CartItem cartItem = em.find(CartItem.class, cartItemId);
-		em.remove(cartItem);
-		return "Cart Item Deleted";
+		if(cartItem != null) {
+			em.remove(cartItem);
+			return "Cart Item Deleted";
+		}
+		return "Cart Item not Deleted";
 	}
 
 	@Override

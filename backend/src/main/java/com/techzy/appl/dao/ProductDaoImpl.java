@@ -1,6 +1,7 @@
 package com.techzy.appl.dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.techzy.appl.beans.CartItem;
 import com.techzy.appl.beans.Product;
+import com.techzy.appl.excp.ProductNotUpdatedException;
 
 @Repository("prdDao")
 @EnableTransactionManagement
@@ -52,15 +54,20 @@ public class ProductDaoImpl implements ProductDao {
 	
 	@Override
 	@Transactional
-	public String updateProduct(int productId, Product newProduct) {
+	public String updateProduct(int productId, Product newProduct) throws ProductNotUpdatedException {
 		Product product = em.find(Product.class, productId);
-		product.setInStock(newProduct.getInStock());
-		product.setProductDescription(newProduct.getProductDescription());
-		product.setProductName(newProduct.getProductName());
-		product.setProductPrice(newProduct.getProductPrice());
-		product.setTotalQuantity(newProduct.getTotalQuantity());
-		product.setProductType(newProduct.getProductType());
-		em.merge(product);
+		if(product == null) {
+			throw new ProductNotUpdatedException("Product not Updated"); 
+		}
+		else {
+			product.setInStock(newProduct.getInStock());
+			product.setProductDescription(newProduct.getProductDescription());
+			product.setProductName(newProduct.getProductName());
+			product.setProductPrice(newProduct.getProductPrice());
+			product.setTotalQuantity(newProduct.getTotalQuantity());
+			product.setProductType(newProduct.getProductType());
+			em.merge(product);
+		}
 		return "Product Updated";
 	}
 

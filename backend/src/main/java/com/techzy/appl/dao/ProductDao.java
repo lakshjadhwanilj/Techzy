@@ -3,6 +3,7 @@ package com.techzy.appl.dao;
 import java.util.List;
 
 import com.techzy.appl.beans.Product;
+import com.techzy.appl.excp.ProductNotUpdatedException;
 
 public interface ProductDao {
 
@@ -12,7 +13,7 @@ public interface ProductDao {
 
 	public Product findProductById(int productId);
 
-	public String updateProduct(int productId, Product newProduct);
+	public String updateProduct(int productId, Product newProduct) throws ProductNotUpdatedException;
 
 	public String deleteProduct(int productId);
 	

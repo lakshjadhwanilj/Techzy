@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 
 import com.techzy.appl.beans.Payment;
+import com.techzy.appl.excp.PaymentNotDoneException;
 
 @Repository("paymentDao")
 public class PaymentDaoImpl implements PaymentDao {
@@ -41,8 +42,12 @@ public class PaymentDaoImpl implements PaymentDao {
 	}
 
 	@Override
-	public Payment getPayment(int paymentId) {
-		return em.find(Payment.class, paymentId);
+	public Payment getPayment(int paymentId) throws PaymentNotDoneException {
+		Payment payment = em.find(Payment.class, paymentId);
+		if(payment == null) {
+			throw new PaymentNotDoneException("Payment not done");
+		}
+		return payment;
 	}
 	
 

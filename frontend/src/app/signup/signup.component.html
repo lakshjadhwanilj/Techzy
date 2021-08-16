@@ -23,7 +23,7 @@
           <input type="password" class="form-control" id="floatingPassword" pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" placeholder="Password" [formControlName]="'var_password'">
           <label for="floatingPassword">Password</label>
            <!--validation  -->
-          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be of minimum length 8 and should contain atleast 1 Uppercase Letter, 1 lowercase letter, 1 digit and 1 Special Character(#?!@$%^&*-)</small>
+          <small *ngIf = "var_password?.invalid && var_password?.touched" class = "text-danger">Password should be a combination of uppercase and lowercase letters, digits and special characters</small>
       </div> 
         <button [disabled] = signupform.invalid class="w-100 btn btn-lg button-success" data-target="#successModal" type="submit">Sign up</button>
         <div class = "signin">

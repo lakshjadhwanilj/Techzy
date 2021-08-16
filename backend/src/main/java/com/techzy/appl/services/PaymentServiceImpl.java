@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.techzy.appl.beans.Payment;
 import com.techzy.appl.dao.PaymentDao;
+import com.techzy.appl.excp.PaymentNotDoneException;
 
 @Service("paymentService")
 public class PaymentServiceImpl implements PaymentService {
@@ -26,7 +27,7 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public Payment getPayment(int paymentId) {
+	public Payment getPayment(int paymentId) throws PaymentNotDoneException{
 		return paymentDao.getPayment(paymentId);
 	}
 }

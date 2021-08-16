@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techzy.appl.beans.Product;
+import com.techzy.appl.excp.ProductNotUpdatedException;
 import com.techzy.appl.services.ProductServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -42,7 +43,14 @@ public class ProductController {
 
 	@PutMapping(path = "/products/{id}")
 	public String updateProduct(@PathVariable(value = "id") int productId, @RequestBody Product newProduct) {
-		return productService.updateProduct(productId, newProduct);
+		String msg = "";
+		try {
+			msg = productService.updateProduct(productId, newProduct);
+		} catch (ProductNotUpdatedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return msg;
 	}
 
 	@DeleteMapping(path = "/products/{id}")

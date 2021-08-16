@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techzy.appl.beans.Payment;
+import com.techzy.appl.excp.PaymentNotDoneException;
 import com.techzy.appl.services.PaymentServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -33,6 +34,13 @@ public class PaymentController {
 	
 	@GetMapping(path = "/payment/{paymentId}")
 	public Payment getPayment(int paymentId) {
-		return paymentService.getPayment(paymentId);
+		Payment payment = new Payment();
+		try {
+			payment = paymentService.getPayment(paymentId);
+		} catch (PaymentNotDoneException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return payment;
 	}
 }

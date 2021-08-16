@@ -61,12 +61,6 @@ export class SigninComponent implements OnInit {
       
       for(var user of this.userList){
         if (user.userEmail == this.userEmail) {
-          // sessionStorage.setItem("userName", user.userName)
-          // sessionStorage.setItem("userId",(user.userId).toString())
-          // sessionStorage.setItem("userEmail", this.userEmail)
-          // sessionStorage.setItem("userType", user.userType)
-          // this.router.navigate(['home']);
-          //this.signinform.reset();
           this.flagEmail=1;
           this.decryptedPassword =this.decrypt(user.userPassword);
           console.log(this.decryptedPassword);
