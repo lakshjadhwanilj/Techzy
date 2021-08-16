@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.techzy.appl.beans.Product;
 import com.techzy.appl.beans.User;
+import com.techzy.appl.excp.UserNotFoundException;
 
 public interface UserDao {
 
@@ -11,7 +12,7 @@ public interface UserDao {
 	
 	public List<User> getUserList();
 	
-	public User findUserById(int userId);
+	public User findUserById(int userId) throws UserNotFoundException;
 	
 	public String updateUser(int userId, User newUser);
 	

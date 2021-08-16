@@ -25,6 +25,7 @@ export class GetProductByIdComponent implements OnInit {
   cartItem: CartItem = new CartItem();
   wishListItem:WishListItems = new WishListItems();
   userId: any;
+  clicked:boolean = false;
 
   ram:any;
   rom:any;
@@ -136,12 +137,15 @@ export class GetProductByIdComponent implements OnInit {
   }
 
   addToCart(p: any) {
+    this.clicked = true;
+    console.log(this.clicked)
     if (this.userId) {
       this.cartItem.productName = p.productName
       this.cartItem.quantity = 1
       this.cartItem.productPrice = p.productPrice
       this.cartItem.userId = this.userId
       this.cartService.createCartItem(this.cartItem).subscribe()
+      
     } else {
       this.router.navigate(['signin'])
     }

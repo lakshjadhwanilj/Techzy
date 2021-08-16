@@ -51,7 +51,10 @@ body {
   border-top-right-radius: 0;
 }
 
-
+.addUpdateBtn{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
 .register {
   font-size: 0.8rem;
   margin-bottom: 0;

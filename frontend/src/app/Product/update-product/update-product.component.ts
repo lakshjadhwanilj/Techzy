@@ -81,12 +81,12 @@ export class UpdateProductComponent implements OnInit {
     this.product.productPrice =  this.updateProductForm.controls.productPrice.value;
   
     this.productService.updateNewProduct(this.productId,this.product).subscribe(data=> console.log(data))
+    this.submitted = true;
     console.log("Product Updated" + this.product);
   
   }
   
   onSubmit() {
-    this.submitted = true
     this.save()
   }
   

@@ -32,6 +32,9 @@
                     <ng-template #updateBtn>
                         <button type="submit" class="btn-block btn btn-lg button-outline-success text-uppercase" [routerLink]="['updateContactDetails']"><i class="fas fa-edit"></i> Update contact</button>
                     </ng-template>
+                    <div [hidden] = "!submitted" class="alert alert-success" role="alert">
+                        Profile updated Successfully
+                    </div>
 	            </form>
             </div>
 
@@ -59,6 +62,41 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div [hidden]="!deleted" class="alert alert-warning" role = "alert">
+                            Product removed from cart Successfully
+                        </div>
+                        <table class="table" >
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let w of wishList">
+                                    <th class="my-2 align-middle">{{w.productName}}</th>
+                                    <td>
+                                        <form>
+                                            <div class="w-50 input-group my-2">
+                                            <label for="">{{productList}}</label>
+                                            </div>
+                                            </form>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-danger m-2" (click)="onDelete(w.wishListItemId)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+        
                 </div>
             </div>
         </div>

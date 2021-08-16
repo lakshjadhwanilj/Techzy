@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   subject_wish: any;
   wishList: WishListItems[]=[];
   productList:any[] = [];
+  deleted:boolean = false;
   product:Product = new Product()
 
 //******************user part************* */
@@ -69,7 +70,6 @@ export class UserProfileComponent implements OnInit {
   
 
    onSubmit(){
-     this.submitted = true;
      this.error = '';
      if(this.updateUserProfileForm.valid){
       this.userName = this.updateUserProfileForm.controls.var_name.value;
@@ -85,6 +85,7 @@ export class UserProfileComponent implements OnInit {
       //this.ngOnInit();
       // console.log("User added" + this.user);
      }
+     this.submitted = true;
    }
    updateUser(userId:number){
    this.userService.updateUser(userId, this.userObj)
@@ -125,7 +126,7 @@ export class UserProfileComponent implements OnInit {
       this.ngOnInit()
       console.log(data)
     } )
-    
+    this.deleted = true;
   }
 
 }
